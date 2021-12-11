@@ -1,25 +1,69 @@
-import React, { FC } from "react";
-import { ScaleUpTransition } from "../scale-up-transition";
-import { FadeInTransition } from "../fade-in-transition/FadeInTransition";
+import React, { CSSProperties, ReactElement, useMemo } from "react";
+import { Transition } from "../transition/Transition";
+import { useCSSStyle } from "../../hooks/use-css-style";
+import { Ease } from "../../ease";
 
-const ZoomInTransition: FC<{
+type ScaleUpTransitionProps = {
+  children: ReactElement;
+  delay?: number;
+  ease?: string;
   from: number;
   to: number;
   timeout: number;
   in?: boolean;
-}> = ({ from = 0.9, to = 1, timeout, ...props }) => {
+  appear?: boolean;
+  style?: CSSProperties;
+  transformOrigin?: string;
+  [key: string]: any;
+};
+
+const ZoomInTransition = ({
+  children,
+  delay = 0,
+  ease = Ease.ease,
+  transformOrigin = "center",
+  from,
+  to,
+  style,
+  timeout,
+  ...props
+}: ScaleUpTransitionProps) => {
+  const defaultStyle = useCSSStyle(
+    {
+      transformOrigin: transformOrigin,
+      willChange: "transform",
+      transition: `transform ${timeout}ms ${ease} ${delay}ms`,
+    },
+    [timeout, ease, delay]
+  );
+  const transitionStyle = useMemo(
+    () => ({
+      entering: {
+        transform: `scale(${to})`,
+      },
+      entered: {
+        transform: `scale(${to})`,
+      },
+      exiting: {
+        transform: `scale(${from})`,
+      },
+      exited: {
+        transform: `scale(${from})`,
+      },
+    }),
+    [from, to]
+  );
   return (
-    <ScaleUpTransition
+    <Transition
       {...props}
-      from={from}
-      to={to}
       timeout={timeout}
-      in={props.in}
+      style={style}
+      defaultStyle={defaultStyle}
+      transitionStyle={transitionStyle}
+      className={"ScaleUpTransition"}
     >
-      <FadeInTransition timeout={timeout} from={0} to={1} in={props.in}>
-        {props.children}
-      </FadeInTransition>
-    </ScaleUpTransition>
+      {children}
+    </Transition>
   );
 };
 

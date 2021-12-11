@@ -3,11 +3,11 @@ import React, { CSSProperties, forwardRef, ReactNode, useMemo } from "react";
 import { Ease } from "../../ease";
 
 type FadeTransitionProps = {
-  children: ReactNode;
+  children?: ReactNode;
   timeout: number;
   delay?: number;
   style?: CSSProperties;
-  in: boolean;
+  in?: boolean;
   ease?: Ease;
   appear?: boolean;
   from: number;
