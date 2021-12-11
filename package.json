@@ -1,9 +1,10 @@
 {
   "name": "react-transitions-library",
-  "version": "1.2.0",
-  "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "1.2.3",
+  "license": "MIT",
+  "description": "A react component library for animations.",
+  "author": "Stanislav Panchenko <email@stanislavpanchenko.de>",
+  "homepage": "https://github.com/rilexus/react-transition-library#readme",
   "scripts": {
     "build": "tsc",
     "tsc:watch": "tsc --watch",
@@ -19,9 +20,23 @@
     "styled-components": "^5.3.3",
     "react-transition-group": "^4.4.2"
   },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "peerDependencies": {
     "react": "^17.0.2"
   },
-  "author": "Stanislav Panchenko",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rilexus/react-transition-library"
+  },
+  "keywords": [
+    "react",
+    "transition",
+    "animation",
+    "transitions",
+    "react-transition-library"
+  ],
+  "bugs": {
+    "url": "https://github.com/rilexus/react-transition-library/issues"
+  }
 }
