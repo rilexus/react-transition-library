@@ -1,0 +1,1 @@
+export {TouchScaleTransition} from "./TouchScaleTransition";

@@ -1,0 +1,27 @@
+{
+  "name": "react-transitions-library",
+  "version": "1.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "tsc:watch": "tsc --watch",
+    "start:dev": "npm run tsc:watch"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1",
+    "@types/react-transition-group": "^4.4.4",
+    "@types/styled-components": "^5.1.17",
+    "typescript": "^4.5.3"
+  },
+  "dependencies": {
+    "styled-components": "^5.3.3",
+    "react-transition-group": "^4.4.2"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
+  },
+  "author": "Stanislav Panchenko",
+  "license": "ISC"
+}
