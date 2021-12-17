@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { useCSSStyle } from "../../hooks";
 import { Transition } from "../transition";
 
-const BackDropTransition = ({
+const BackdropTransition = ({
   timeout,
   delay = 0,
   to,
@@ -19,25 +19,25 @@ const BackDropTransition = ({
       transition: `backdrop-filter ${timeout}ms ${ease} ${delay}ms, opacity ${timeout}ms ${ease} ${delay}ms`,
       ...style,
     },
-    [timeout, delay]
+    [timeout, delay, style]
   );
 
   const transitionStyle = useMemo(
     () => ({
       entering: {
-        backdropFilter: `blur(${to}px)`,
+        backdropFilter: `blur(${to})`,
         opacity: 1,
       },
       entered: {
-        backdropFilter: `blur(${to}px)`,
+        backdropFilter: `blur(${to})`,
         opacity: 1,
       },
       exiting: {
-        backdropFilter: `blur(${from}px)`,
+        backdropFilter: `blur(${from})`,
         opacity: 0,
       },
       exited: {
-        backdropFilter: `blur(${from}px)`,
+        backdropFilter: `blur(${from})`,
         opacity: 0,
       },
     }),
@@ -56,4 +56,4 @@ const BackDropTransition = ({
   );
 };
 
-export { BackDropTransition };
+export { BackdropTransition };

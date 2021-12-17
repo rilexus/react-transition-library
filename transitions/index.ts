@@ -13,4 +13,4 @@ export * from "./zoom-in-transition";
 export * from "./slide-in";
 export * from "./back";
 export * from "./transition-group";
-export * from "./back-drop-transition";
+export * from "./backdrop-transition";
