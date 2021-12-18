@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
 
 ReactDOM.render(
-  <BrowserRouter basename={"react-transition-library"}>
+  <BrowserRouter basename={"/react-transition-library"}>
     <App />
   </BrowserRouter>,
   document.getElementById("root")

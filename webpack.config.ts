@@ -1,6 +1,9 @@
 import path from "path";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin";
+
+const BUILD_FOLDER = "docs";
 
 const config = {
   entry: "./site/index.tsx",
@@ -27,7 +30,7 @@ const config = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    path: path.resolve(__dirname, "docs"),
+    path: path.resolve(__dirname, BUILD_FOLDER),
     filename: "bundle.js",
   },
   devServer: {
@@ -49,6 +52,14 @@ const config = {
       eslint: {
         files: "./site/**/*",
       },
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: "public/404.html",
+          to: "." /* copy the 404.html to the "docs" folder */,
+        },
+      ],
     }),
   ],
 };
