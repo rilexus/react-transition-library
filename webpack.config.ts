@@ -2,6 +2,7 @@ import path from "path";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
+import { basename } from "./env";
 
 const BUILD_FOLDER = "docs";
 
@@ -40,6 +41,13 @@ const config = {
     client: {
       progress: true,
     },
+    open: [
+      /*
+        Since the site is served from "https://rilexus.github.io/react-transition-library/" we need
+        to opens the browser at this url in development
+       */
+      basename,
+    ],
     historyApiFallback: true,
     compress: true,
     hot: true,
