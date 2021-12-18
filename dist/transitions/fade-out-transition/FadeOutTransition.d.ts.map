@@ -1,1 +1,0 @@
-{"version":3,"file":"FadeOutTransition.d.ts","sourceRoot":"","sources":["../../../transitions/fade-out-transition/FadeOutTransition.tsx"],"names":[],"mappings":";AAGA,OAAO,EAAE,eAAe,EAAE,MAAM,oCAAoC,CAAC;AAErE,aAAK,KAAK,GAAG,eAAe,GAAG;IAC7B,IAAI,EAAE,MAAM,CAAC;IACb,EAAE,EAAE,MAAM,CAAC;CACZ,CAAC;AAEF,QAAA,MAAM,iBAAiB,oEASpB,KAAK,gBA4BP,CAAC;AAEF,OAAO,EAAE,iBAAiB,EAAE,CAAC"}
