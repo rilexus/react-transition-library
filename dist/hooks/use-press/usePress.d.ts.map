@@ -1,1 +1,0 @@
-{"version":3,"file":"usePress.d.ts","sourceRoot":"","sources":["../../../hooks/use-press/usePress.ts"],"names":[],"mappings":"AAEA,aAAK,WAAW;IACd,IAAI,SAAS;IACb,UAAU,eAAe;IACzB,KAAK,UAAU;IACf,QAAQ,aAAa;CACtB;AAED,QAAA,MAAM,QAAQ,aAAc,GAAG,OAAO,GAAG,KAAG,WA2D3C,CAAC;AAEF,OAAO,EAAE,QAAQ,EAAE,WAAW,EAAE,CAAC"}

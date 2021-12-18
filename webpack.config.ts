@@ -1,9 +1,8 @@
 import path from "path";
-import { Configuration } from "webpack";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
-const config: Configuration = {
+const config = {
   entry: "./site/index.tsx",
   mode: "development",
   module: {
@@ -28,7 +27,7 @@ const config: Configuration = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    path: path.resolve(__dirname, "public"),
+    path: path.resolve(__dirname, "dist-site"),
     filename: "bundle.js",
   },
   devServer: {

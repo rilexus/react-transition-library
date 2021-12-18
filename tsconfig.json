@@ -25,5 +25,12 @@
       "module": "CommonJS"
     }
   },
-  "exclude": ["dist", "node_modules"]
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "dist",
+    "node_modules",
+    "webpack.config.ts",
+    "site"
+  ]
 }

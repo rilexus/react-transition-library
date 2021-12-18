@@ -1,9 +1,16 @@
 import { Link, Route, Routes } from "react-router-dom";
 import React, { FC } from "react";
 import { FadeInExample, FadeOutExample, BackdropExample } from "./examples";
-
+import { ResetCssStyled } from "./ResetCss.styled";
+import { Li, Ul } from "./components";
+import styled from "styled-components";
+import { typographyBoldLG } from "./theme";
 const navbarLeftWidth = 150;
 const navbarLeftZIndex = 100;
+
+const AnimationTypeTitle = styled.h5`
+  ${typographyBoldLG};
+`;
 
 const NavbarLeft = () => {
   return (
@@ -18,20 +25,30 @@ const NavbarLeft = () => {
         width: `${navbarLeftWidth}px`,
       }}
     >
-      <ul>
-        <li>
+      <Ul>
+        <Li>
           <Link to={"/"}>Home</Link>
-        </li>
-        <li>
-          <Link to={"/backdrop"}>Backdrop</Link>
-        </li>
-        <li>
-          <Link to={"/fadein"}>Fade in</Link>
-        </li>
-        <li>
-          <Link to={"/fadeout"}>Fade out</Link>
-        </li>
-      </ul>
+        </Li>
+        <Li>
+          <AnimationTypeTitle>Filter</AnimationTypeTitle>
+          <ul>
+            <Li>
+              <Link to={"/backdrop"}>Backdrop</Link>
+            </Li>
+          </ul>
+        </Li>
+        <Li>
+          <AnimationTypeTitle>Fade</AnimationTypeTitle>
+          <ul>
+            <Li>
+              <Link to={"/fadein"}>Fade in</Link>
+            </Li>
+            <Li>
+              <Link to={"/fadeout"}>Fade out</Link>
+            </Li>
+          </ul>
+        </Li>
+      </Ul>
     </nav>
   );
 };
@@ -59,6 +76,7 @@ const Page: FC = ({ children }) => {
 const App = () => {
   return (
     <div>
+      <ResetCssStyled />
       <NavbarLeft />
       <div
         style={{

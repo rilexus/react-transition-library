@@ -1,12 +1,13 @@
 import React from "react";
 import { FadeOutTransition } from "../../../transitions";
 import { useToggle } from "../../hooks";
+import { PageTitle } from "../../components";
 
 const FadeOutExample = () => {
   const [show, toggle] = useToggle();
   return (
     <div>
-      <h2>Fade out</h2>
+      <PageTitle>Fade out</PageTitle>
       <FadeOutTransition from={1} to={0} timeout={400} in={show}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias cum eius
         nisi reiciendis veritatis. Architecto, aspernatur autem cupiditate
