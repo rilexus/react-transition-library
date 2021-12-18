@@ -27,7 +27,7 @@ const config = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    path: path.resolve(__dirname, "dist-site"),
+    path: path.resolve(__dirname, "docs"),
     filename: "bundle.js",
   },
   devServer: {
