@@ -1,31 +1,30 @@
-import React, { ReactNode } from "react";
-import { Transition } from "../transition/Transition";
+import React from "react";
+import { Transition } from "../transition";
+import { Ease } from "../../ease";
+import { TransitionProps } from "../transition/TransitionProps.type";
+
+type Props = TransitionProps & {
+  from: number;
+  to: number;
+};
 
 const FadeOutTransition = ({
   children,
   timeout,
   from,
   to,
+  ease = Ease.ease,
   delay = 0,
   in: _in,
   ...props
-}: {
-  children: ReactNode;
-  timeout: number;
-  delay?: number;
-  from: number;
-  to: number;
-  in?: boolean;
-  [key: string]: any;
-}) => {
+}: Props) => {
   return (
     <Transition
       {...props}
       in={_in}
       className={"FadeOutTransition"}
       defaultStyle={{
-        transition: `opacity ${timeout}ms ease ${delay}ms`,
-        // opacity: 1,
+        transition: `opacity ${timeout}ms ${ease} ${delay}ms`,
       }}
       transitionStyle={{
         entering: {

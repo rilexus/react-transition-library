@@ -1,33 +1,20 @@
 import { Transition } from "../transition";
 import React, { CSSProperties, forwardRef, ReactNode, useMemo } from "react";
 import { Ease } from "../../ease";
+import { TransitionProps } from "../transition/TransitionProps.type";
 
-type FadeTransitionProps = {
+type FadeTransitionProps = TransitionProps & {
   children?: ReactNode;
-  timeout: number;
   delay?: number;
-  style?: CSSProperties;
-  in?: boolean;
   ease?: Ease;
-  appear?: boolean;
   from: number;
   to: number;
-  [key: string]: any;
 };
 
-const FadeInTransition = forwardRef<HTMLDivElement, FadeTransitionProps>(
+const FadeInTransition = forwardRef<HTMLElement, FadeTransitionProps>(
   (
-    {
-      children,
-      ease = Ease.ease,
-      timeout,
-      delay = 0,
-      style,
-      from = 0,
-      to = 1,
-      ...props
-    }: FadeTransitionProps,
-    outsideRef: any
+    { children, ease = Ease.ease, timeout, delay = 0, from, to, ...props },
+    outsideRef
   ) => {
     const transitionStyle = useMemo(
       () => ({
@@ -59,7 +46,6 @@ const FadeInTransition = forwardRef<HTMLDivElement, FadeTransitionProps>(
       <Transition
         {...props}
         ref={outsideRef}
-        style={style}
         timeout={timeout}
         defaultStyle={defaultStyle}
         transitionStyle={transitionStyle}

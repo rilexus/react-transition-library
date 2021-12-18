@@ -1,39 +1,17 @@
 import { Transition as RTGTransition } from "react-transition-group";
 import React, {
   createElement,
-  CSSProperties,
   forwardRef,
-  ReactNode,
   useEffect,
   useRef,
   useState,
 } from "react";
-import { TransitionStatusType, TransitionStylesType } from "../../types";
+import { TransitionStatusType } from "../../types";
+import { TransitionFactoryPropsType } from "./TransitionProps.type";
 
-interface TransitionProps {
-  defaultStyle: CSSProperties;
-  transitionStyle: TransitionStylesType;
-  className?: string;
-  children: ReactNode;
-  style?: CSSProperties;
-  in?: boolean;
-  as?: string;
-  appear?: boolean;
-  timeout: number | { appear?: number; enter?: number; exit?: number };
-  [key: string]: any;
-}
-
-const Transition = forwardRef(
+const Transition = forwardRef<HTMLElement, TransitionFactoryPropsType>(
   (
-    {
-      children,
-      defaultStyle,
-      transitionStyle,
-      className,
-      as,
-      style,
-      ...props
-    }: TransitionProps,
+    { children, defaultStyle, transitionStyle, className, as, style, ...props },
     outsideRef: any
   ) => {
     const [_in, _setIn] = useState(false);
@@ -81,4 +59,5 @@ const Transition = forwardRef(
     );
   }
 );
+
 export { Transition };

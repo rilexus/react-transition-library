@@ -1,11 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import { useToggle } from "../../hooks";
 import { BackdropTransition } from "../../../transitions";
-
-const useToggle = (initialValue = false) => {
-  const [value, setValue] = useState(initialValue);
-  const toggle: any = () => setValue((t) => !t);
-  return [value, toggle, setValue];
-};
 
 const BackdropExample = () => {
   const [show, toggle] = useToggle(false);
