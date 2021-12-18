@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Navigate, Route, Routes } from "react-router-dom";
 import React, { FC } from "react";
 import { FadeInExample, FadeOutExample, BackdropExample } from "./examples";
 import { ResetCssStyled } from "./ResetCss.styled";
@@ -85,10 +85,11 @@ const App = () => {
       >
         <Page>
           <Routes>
+            <Route path={"/"} element={<Home />} />
             <Route path={"/backdrop"} element={<BackdropExample />} />
             <Route path={"/fadein"} element={<FadeInExample />} />
             <Route path={"/fadeout"} element={<FadeOutExample />} />
-            <Route path={"/"} element={<Home />} />
+            <Route path={"*"} element={<Navigate to={"/"} />} />
           </Routes>
         </Page>
       </div>
