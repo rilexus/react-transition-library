@@ -18,7 +18,7 @@
     "noEmit": false,
     "jsx": "react-jsx",
     "strict": true,
-    "baseUrl": "."
+    "baseUrl": "./transitions"
   },
   "ts-node": {
     "compilerOptions": {
@@ -29,6 +29,7 @@
     "**/*.spec.ts",
     "**/*.test.ts",
     "dist",
+    "docs",
     "node_modules",
     "webpack.config.ts",
     "site"
