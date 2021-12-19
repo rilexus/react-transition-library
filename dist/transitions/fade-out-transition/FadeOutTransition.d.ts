@@ -1,9 +1,7 @@
-/// <reference types="react" />
-import { TransitionProps } from "../transition/TransitionProps.type";
-declare type Props = TransitionProps & {
+import React from "react";
+declare const FadeOutTransition: React.FC<import("../transition/TransitionProps.type").TransitionProps<undefined> & {
     from: number;
     to: number;
-};
-declare const FadeOutTransition: ({ children, timeout, from, to, ease, delay, in: _in, ...props }: Props) => JSX.Element;
+}>;
 export { FadeOutTransition };
 //# sourceMappingURL=FadeOutTransition.d.ts.map

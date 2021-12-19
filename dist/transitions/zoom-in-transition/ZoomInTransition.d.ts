@@ -1,17 +1,10 @@
-import { CSSProperties, ReactElement } from "react";
-declare type ScaleUpTransitionProps = {
-    children: ReactElement;
-    delay?: number;
-    ease?: string;
+import React from "react";
+declare const ZoomInTransition: React.FC<import("../transition/TransitionProps.type").TransitionProps<undefined> & {
+    delay?: number | undefined;
+    ease?: string | undefined;
     from: number;
     to: number;
-    timeout: number;
-    in?: boolean;
-    appear?: boolean;
-    style?: CSSProperties;
-    transformOrigin?: string;
-    [key: string]: any;
-};
-declare const ZoomInTransition: ({ children, delay, ease, transformOrigin, from, to, style, timeout, ...props }: ScaleUpTransitionProps) => JSX.Element;
+    transformOrigin?: string | undefined;
+}>;
 export { ZoomInTransition };
 //# sourceMappingURL=ZoomInTransition.d.ts.map
