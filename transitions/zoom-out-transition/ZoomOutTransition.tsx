@@ -1,6 +1,6 @@
 import React from "react";
 import { ZoomTransition } from "../zoom-transition";
 
-const ZoomInTransition = ZoomTransition;
+const ZoomOutTransition = ZoomTransition;
 
-export { ZoomInTransition };
+export { ZoomOutTransition };

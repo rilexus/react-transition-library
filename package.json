@@ -1,6 +1,6 @@
 {
   "name": "react-transitions-library",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "license": "MIT",
   "description": "A react component library for animations.",
   "author": "Stanislav Panchenko <email@stanislavpanchenko.de>",
@@ -9,6 +9,7 @@
     "build:transitions": "tsc --project ./tsconfig.json",
     "tsc:watch": "tsc --watch",
     "build:site": "webpack",
+    "build": "npm run build:site && npm run build:transitions",
     "start": "webpack serve --config ./webpack.config.ts"
   },
   "devDependencies": {

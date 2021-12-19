@@ -1,33 +1,55 @@
-import React, { FC } from "react";
-import { TransitionProps } from "react-transition-group/Transition";
+import React, { CSSProperties, FC, useMemo } from "react";
 import { Transition } from "../transition/Transition";
+import { TransitionProps } from "../transition/TransitionProps.type";
+import { Ease } from "../../ease";
 
-const OpacityTransition: FC<TransitionProps> = ({
+type OpacityTransitionProps = TransitionProps & {
+  from: number;
+  to: number;
+};
+
+const OpacityTransition: FC<OpacityTransitionProps> = ({
   children,
   from,
   to,
   delay = 0,
+  timeout,
+  ease = Ease.ease,
   ...props
 }) => {
+  const transitionStyle = useMemo(
+    () => ({
+      entering: {
+        opacity: to,
+      },
+      entered: {
+        opacity: to,
+      },
+      exiting: {
+        opacity: from,
+      },
+      exited: {
+        opacity: from,
+      },
+    }),
+    [from, to]
+  );
+
+  const defaultStyle = useMemo<CSSProperties>(
+    () => ({
+      willChange: "opacity",
+      transition: `opacity ${timeout}ms ${ease} ${delay}ms`,
+    }),
+    [timeout, delay, ease]
+  );
+
   return (
     <Transition
       {...props}
-      defaultStyle={{
-        willChange: "opacity",
-        transition: `opacity ${props.timeout}ms ease ${delay}ms`,
-      }}
-      transitionStyle={{
-        entered: {
-          opacity: to,
-        },
-        entering: {
-          opacity: from,
-        },
-        exiting: {},
-        exited: {
-          opacity: from,
-        },
-      }}
+      timeout={timeout}
+      defaultStyle={defaultStyle}
+      transitionStyle={transitionStyle}
+      className={"OpacityTransition"}
     >
       {children}
     </Transition>
