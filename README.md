@@ -1,5 +1,15 @@
 # React-Transitions-Library
 
+## Installation
+### yarn
+```bash
+yarn add react-transitions-library react-transition-group
+```
+### npm
+```bash
+npm install react-transitions-library react-transition-group
+```
+
 ## Docs
 [Homepage](https://rilexus.github.io/react-transition-library/)
 
