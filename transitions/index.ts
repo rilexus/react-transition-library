@@ -1,21 +1,23 @@
 export * from "./touch-scale-transition";
 export * from "./fallback-transition";
+
 export * from "./scale-down-transition";
-export * from "./blur-transition";
+
 export * from "./transition/Transition";
+export * from "./transition-group";
 
 export * from "./opacity-transition";
 export * from "./fade-out-transition";
 export * from "./fade-in-transition";
 
 export * from "./css-transition/CSSTransition";
-export * from "./scale-transition";
 
+export * from "./scale-transition";
 export * from "./zoom-in-transition";
 export * from "./zoom-transition";
 export * from "./zoom-out-transition";
 
-export * from "./slide-in";
-export * from "./back";
-export * from "./transition-group";
+export * from "./slide-y-transition";
+
+export * from "./blur-transition";
 export * from "./backdrop-transition";

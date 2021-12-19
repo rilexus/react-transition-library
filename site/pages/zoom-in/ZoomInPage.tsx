@@ -9,10 +9,12 @@ const ZoomInPage = () => {
     <div>
       <PageTitle>Zoom In</PageTitle>
       <ZoomInTransition from={0} to={1} timeout={400} in={show}>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-        assumenda beatae consequuntur et eum ex ipsa itaque iure magni modi
-        necessitatibus nihil, non omnis possimus, quisquam quos similique, ut
-        veritatis.
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+          assumenda beatae consequuntur et eum ex ipsa itaque iure magni modi
+          necessitatibus nihil, non omnis possimus, quisquam quos similique, ut
+          veritatis.
+        </p>
       </ZoomInTransition>
       <AnimateButton onClick={toggle} />
     </div>

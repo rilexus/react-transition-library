@@ -30,10 +30,12 @@ const BackdropExample = () => {
             padding: "2rem",
           }}
         >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-          autem blanditiis eveniet illo ipsum laudantium necessitatibus nulla
-          omnis praesentium qui. Aliquid aut corporis culpa cumque earum hic,
-          laudantium sapiente voluptate!
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+            autem blanditiis eveniet illo ipsum laudantium necessitatibus nulla
+            omnis praesentium qui. Aliquid aut corporis culpa cumque earum hic,
+            laudantium sapiente voluptate!
+          </p>
         </div>
       </div>
       <div>

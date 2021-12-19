@@ -9,10 +9,12 @@ const FadeInExample = () => {
     <div>
       <PageTitle>Fade in</PageTitle>
       <FadeInTransition in={show} from={0} to={1} timeout={400}>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis
-        consequatur cum deleniti, esse expedita hic id illum in incidunt magnam
-        necessitatibus neque nulla obcaecati quaerat quidem repellendus, sed
-        sequi voluptas.
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis
+          consequatur cum deleniti, esse expedita hic id illum in incidunt
+          magnam necessitatibus neque nulla obcaecati quaerat quidem
+          repellendus, sed sequi voluptas.
+        </p>
       </FadeInTransition>
       <AnimateButton onClick={toggle} />
     </div>

@@ -1,24 +1,21 @@
 import React, { CSSProperties, FC, useMemo } from "react";
-import { useCSSStyle } from "../../../hooks";
-import { Transition } from "../../transition";
-import { Ease } from "../../../ease";
+import { useCSSStyle } from "../../hooks";
+import { Transition } from "../transition";
+import { Ease } from "../../ease";
+import { TransitionProps } from "../transition/TransitionProps.type";
 
-const SlideInUpTransition: FC<{
-  from: string;
-  to: string;
-  ease?: Ease;
-  delay?: number;
-  timeout: number;
-  style?: CSSProperties;
-  [key: string]: any;
-}> = ({
+const SlideYTransition: FC<
+  TransitionProps & {
+    from: string;
+    to: string;
+  }
+> = ({
   children,
   from,
   to,
   ease = Ease.ease,
   delay = 0,
   timeout,
-  style,
   ...props
 }) => {
   const defaultStyle = useCSSStyle(
@@ -28,7 +25,6 @@ const SlideInUpTransition: FC<{
       transitionDelay: `${delay}ms`,
       transition: `transform ${timeout}ms`,
       transform: `translateY(${from})`,
-      ...style,
     },
     [from, timeout, ease, delay]
   );
@@ -55,10 +51,10 @@ const SlideInUpTransition: FC<{
       timeout={timeout}
       defaultStyle={defaultStyle}
       transitionStyle={transitionStyle}
-      className={"ScaleUpTransition"}
+      className={"ScaleInUpTransition"}
     >
       {children}
     </Transition>
   );
 };
-export { SlideInUpTransition };
+export { SlideYTransition };

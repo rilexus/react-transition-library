@@ -1,12 +1,9 @@
 import { FC } from "react";
-declare type Props = {
-    timeout: number;
-    in?: boolean;
-    delay?: number;
+import { TransitionProps } from "../transition/TransitionProps.type";
+declare type BlurTransitionProps = TransitionProps & {
     to: string;
     from: string;
-    appear?: boolean;
 };
-declare const BlurTransition: FC<Props>;
+declare const BlurTransition: FC<BlurTransitionProps>;
 export { BlurTransition };
 //# sourceMappingURL=BlurTransition.d.ts.map

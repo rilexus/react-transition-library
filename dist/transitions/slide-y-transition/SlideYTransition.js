@@ -22,29 +22,32 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 import { jsx as _jsx } from "react/jsx-runtime";
 import { useMemo } from "react";
-import { Transition } from "../transition";
 import { useCSSStyle } from "../../hooks";
+import { Transition } from "../transition";
 import { Ease } from "../../ease";
-var BlurTransition = function (_a) {
-    var children = _a.children, timeout = _a.timeout, _b = _a.delay, delay = _b === void 0 ? 0 : _b, from = _a.from, to = _a.to, _c = _a.ease, ease = _c === void 0 ? Ease.ease : _c, props = __rest(_a, ["children", "timeout", "delay", "from", "to", "ease"]);
+var SlideYTransition = function (_a) {
+    var children = _a.children, from = _a.from, to = _a.to, _b = _a.ease, ease = _b === void 0 ? Ease.ease : _b, _c = _a.delay, delay = _c === void 0 ? 0 : _c, timeout = _a.timeout, props = __rest(_a, ["children", "from", "to", "ease", "delay", "timeout"]);
     var defaultStyle = useCSSStyle({
-        willChange: "filter",
-        transition: "filter ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
-    }, [timeout, delay, ease]);
+        willChange: "transform",
+        transitionTimingFunction: "".concat(ease),
+        transitionDelay: "".concat(delay, "ms"),
+        transition: "transform ".concat(timeout, "ms"),
+        transform: "translateY(".concat(from, ")"),
+    }, [from, timeout, ease, delay]);
     var transitionStyle = useMemo(function () { return ({
         entering: {
-            filter: "blur(".concat(to, ")"),
+            transform: "translateY(".concat(to, ")"),
         },
         entered: {
-            filter: "blur(".concat(to, ")"),
+            transform: "translateY(".concat(to, ")"),
         },
         exiting: {
-            filter: "blur(".concat(from, ")"),
+            transform: "translateY(".concat(from, ")"),
         },
         exited: {
-            filter: "blur(".concat(from, ")"),
+            transform: "translateY(".concat(from, ")"),
         },
     }); }, [from, to]);
-    return (_jsx(Transition, __assign({}, props, { timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle }, { children: children }), void 0));
+    return (_jsx(Transition, __assign({}, props, { timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "ScaleInUpTransition" }, { children: children }), void 0));
 };
-export { BlurTransition };
+export { SlideYTransition };

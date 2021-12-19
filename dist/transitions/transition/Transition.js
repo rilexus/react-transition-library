@@ -45,7 +45,7 @@ var Transition = forwardRef(function (_a, outsideRef) {
         if (nodeRef.current && outsideRef) {
             outsideRef.current = nodeRef.current;
         }
-    }, [nodeRef]);
+    }, [nodeRef, outsideRef]);
     return (_jsx(RTGTransition, __assign({}, props, { in: _in, nodeRef: nodeRef }, { children: function (transitionStatus) {
             return createElement(as || "div", {
                 style: __assign(__assign(__assign({}, style), defaultStyle), transitionStyle[transitionStatus]),

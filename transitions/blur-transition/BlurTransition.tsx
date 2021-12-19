@@ -1,31 +1,29 @@
 import React, { FC, useMemo } from "react";
 import { Transition } from "../transition";
 import { useCSSStyle } from "../../hooks";
+import { Ease } from "../../ease";
+import { TransitionProps } from "../transition/TransitionProps.type";
 
-type Props = {
-  timeout: number;
-  in?: boolean;
-  delay?: number;
+type BlurTransitionProps = TransitionProps & {
   to: string;
   from: string;
-  appear?: boolean;
 };
 
-const BlurTransition: FC<Props> = ({
+const BlurTransition: FC<BlurTransitionProps> = ({
   children,
   timeout,
   delay = 0,
-  from = "0px",
+  from,
   to,
-  ["in"]: _in,
+  ease = Ease.ease,
   ...props
 }) => {
   const defaultStyle = useCSSStyle(
     {
       willChange: "filter",
-      transition: `filter ${timeout}ms ease ${delay}ms`,
+      transition: `filter ${timeout}ms ${ease} ${delay}ms`,
     },
-    [timeout, delay]
+    [timeout, delay, ease]
   );
 
   const transitionStyle = useMemo(
@@ -48,7 +46,6 @@ const BlurTransition: FC<Props> = ({
   return (
     <Transition
       {...props}
-      in={_in}
       timeout={timeout}
       defaultStyle={defaultStyle}
       transitionStyle={transitionStyle}

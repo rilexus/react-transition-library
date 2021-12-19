@@ -5,6 +5,8 @@ const NavbarLeft: FC = ({ children }) => {
   return (
     <nav
       style={{
+        paddingTop: "1.5rem",
+        paddingLeft: "1.5rem",
         zIndex: navbarLeftZIndex,
         position: "fixed",
         top: 0,

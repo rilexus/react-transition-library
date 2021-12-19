@@ -3,9 +3,10 @@ import React, { FC } from "react";
 import { ResetCssStyled } from "./ResetCss.styled";
 import { Li, Ul } from "./components";
 import styled from "styled-components";
-import { typographyBoldLG } from "./theme";
+import { GlobalCss, ThemeProvider, typographyBoldBase } from "./theme";
 import {
   BackdropExample,
+  BlurPage,
   FadeInExample,
   FadeOutExample,
   Home,
@@ -14,9 +15,12 @@ import {
 } from "./pages";
 import { NavbarLeft } from "./components/navbar-left";
 import { navbarLeftWidth } from "./components/consts";
+import { SlideYPage } from "./pages/slide-y";
+import { margin } from "./theme/margin";
 
 const AnimationTypeTitle = styled.h5`
-  ${typographyBoldLG};
+  ${typographyBoldBase};
+  margin-bottom: ${margin(2)};
 `;
 
 const Page: FC = ({ children }) => {
@@ -33,8 +37,9 @@ const Page: FC = ({ children }) => {
 
 const App = () => {
   return (
-    <div>
+    <ThemeProvider>
       <ResetCssStyled />
+      <GlobalCss />
       <NavbarLeft>
         <Ul>
           <Li>
@@ -42,11 +47,22 @@ const App = () => {
           </Li>
           <Li>
             <AnimationTypeTitle>Filter</AnimationTypeTitle>
-            <ul>
+            <Ul>
               <Li>
                 <Link to={"/backdrop"}>Backdrop</Link>
               </Li>
-            </ul>
+              <Li>
+                <Link to={"/blur"}>Blur</Link>
+              </Li>
+            </Ul>
+          </Li>
+          <Li>
+            <AnimationTypeTitle>Slide</AnimationTypeTitle>
+            <Ul>
+              <Li>
+                <Link to={"/slidey"}>Slide Y</Link>
+              </Li>
+            </Ul>
           </Li>
           <Li>
             <AnimationTypeTitle>Zooming</AnimationTypeTitle>
@@ -85,11 +101,13 @@ const App = () => {
             <Route path={"/fadeout"} element={<FadeOutExample />} />
             <Route path={"/zoomin"} element={<ZoomInPage />} />
             <Route path={"/zoomout"} element={<ZoomOutPage />} />
+            <Route path={"/slidey"} element={<SlideYPage />} />
+            <Route path={"/blur"} element={<BlurPage />} />
             <Route path="*" element={<Navigate to={"/"} />} />
           </Routes>
         </Page>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 

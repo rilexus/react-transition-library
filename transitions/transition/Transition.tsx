@@ -36,7 +36,7 @@ const Transition = forwardRef<HTMLElement, TransitionFactoryPropsType>(
       if (nodeRef.current && outsideRef) {
         outsideRef.current = nodeRef.current;
       }
-    }, [nodeRef]);
+    }, [nodeRef, outsideRef]);
 
     return (
       <RTGTransition {...props} in={_in} nodeRef={nodeRef}>

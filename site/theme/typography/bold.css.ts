@@ -2,6 +2,10 @@ import { fontBoldCss } from "../font/bold.css";
 import {
   text2XLCss,
   text3XLCss,
+  text4XLCss,
+  text5XLCss,
+  text6XLCss,
+  text7XLCss,
   textBaseCss,
   textLGCss,
   textSMCss,
@@ -40,6 +44,26 @@ const typographyBold3XL = css`
   ${fontBoldCss};
   ${text3XLCss};
 `;
+
+const typographyBold4XL = css`
+  ${fontBoldCss};
+  ${text4XLCss};
+`;
+const typographyBold5XL = css`
+  ${fontBoldCss};
+  ${text5XLCss};
+`;
+
+const typographyBold6XL = css`
+  ${fontBoldCss};
+  ${text6XLCss};
+`;
+
+const typographyBold7XL = css`
+  ${fontBoldCss};
+  ${text7XLCss};
+`;
+
 export {
   typographyBoldLG,
   typographyBoldBase,
@@ -48,4 +72,8 @@ export {
   typographyBoldSM,
   typographyBold3XL,
   typographyBold2XL,
+  typographyBold4XL,
+  typographyBold5XL,
+  typographyBold6XL,
+  typographyBold7XL,
 };
