@@ -1,5 +1,8 @@
 # React-Transitions-Library
 
+## Docs
+[Homepage](https://rilexus.github.io/react-transition-library/)
+
 ## Available Transition
 * [FadeInTransition](transitions/fade-in-transition/README.md)
 * [ZoomInTransition](transitions/zoom-in-transition/README.md)
