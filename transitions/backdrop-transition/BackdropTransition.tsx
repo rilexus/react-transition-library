@@ -2,6 +2,10 @@ import React, { useMemo } from "react";
 import { useCSSStyle } from "../../hooks";
 import { Transition } from "../transition";
 
+/**
+ * NOTE: css backdrop-filter transition is a ducking bitch!
+ * It does not play well with other transitions. Especially with the opacity.
+ * */
 const BackdropTransition = ({
   timeout,
   delay = 0,
@@ -10,16 +14,16 @@ const BackdropTransition = ({
   from,
   in: _in,
   children,
-  style,
   ...props
 }: any) => {
   const defaultStyle = useCSSStyle(
     {
       willChange: "backdrop-filter",
-      transition: `backdrop-filter ${timeout}ms ${ease} ${delay}ms, opacity ${timeout}ms ${ease} ${delay}ms`,
-      ...style,
+      transition: `
+      backdrop-filter ${timeout}ms ${ease} ${delay}ms,
+      opacity ${timeout}ms ${ease} ${delay}ms`, // Why opacity you may ask? Because duck this backdrop-filter! That's why!
     },
-    [timeout, delay, style]
+    [timeout, delay]
   );
 
   const transitionStyle = useMemo(

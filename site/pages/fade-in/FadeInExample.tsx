@@ -1,23 +1,23 @@
 import React from "react";
-import { useToggle } from "../../hooks";
+import { usePageTitleAnimation } from "../../hooks";
 import { FadeInTransition } from "../../../transitions";
-import { AnimateButton, PageTitle } from "../../components";
+import { AnimateButton, FullPageCenter, PageTitle } from "../../components";
 
 const FadeInExample = () => {
-  const [show, toggle] = useToggle(false);
+  const { register, toggle } = usePageTitleAnimation();
   return (
-    <div>
-      <PageTitle>Fade in</PageTitle>
-      <FadeInTransition in={show} from={0} to={1} timeout={400}>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis
-          consequatur cum deleniti, esse expedita hic id illum in incidunt
-          magnam necessitatibus neque nulla obcaecati quaerat quidem
-          repellendus, sed sequi voluptas.
-        </p>
-      </FadeInTransition>
-      <AnimateButton onClick={toggle} />
-    </div>
+    <FullPageCenter>
+      <div
+        style={{
+          textAlign: "center",
+        }}
+      >
+        <FadeInTransition from={0} to={1} {...register}>
+          <PageTitle>Fade in</PageTitle>
+        </FadeInTransition>
+        <AnimateButton onClick={toggle} />
+      </div>
+    </FullPageCenter>
   );
 };
 

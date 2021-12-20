@@ -21,9 +21,7 @@ const SlideYTransition: FC<
   const defaultStyle = useCSSStyle(
     {
       willChange: "transform",
-      transitionTimingFunction: `${ease}`,
-      transitionDelay: `${delay}ms`,
-      transition: `transform ${timeout}ms`,
+      transition: `transform ${timeout}ms ${ease} ${delay}ms`,
       transform: `translateY(${from})`,
     },
     [from, timeout, ease, delay]

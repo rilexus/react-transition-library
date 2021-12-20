@@ -24,9 +24,16 @@ import { jsx as _jsx } from "react/jsx-runtime";
 import { useMemo } from "react";
 import { useCSSStyle } from "../../hooks";
 import { Transition } from "../transition";
+/**
+ * NOTE: css backdrop-filter transition is a ducking bitch!
+ * It does not play well with other transitions. Especially with the opacity.
+ * */
 var BackdropTransition = function (_a) {
-    var timeout = _a.timeout, _b = _a.delay, delay = _b === void 0 ? 0 : _b, to = _a.to, _c = _a.ease, ease = _c === void 0 ? "ease" : _c, from = _a.from, _in = _a.in, children = _a.children, style = _a.style, props = __rest(_a, ["timeout", "delay", "to", "ease", "from", "in", "children", "style"]);
-    var defaultStyle = useCSSStyle(__assign({ willChange: "backdrop-filter", transition: "backdrop-filter ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms, opacity ").concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms") }, style), [timeout, delay, style]);
+    var timeout = _a.timeout, _b = _a.delay, delay = _b === void 0 ? 0 : _b, to = _a.to, _c = _a.ease, ease = _c === void 0 ? "ease" : _c, from = _a.from, _in = _a.in, children = _a.children, props = __rest(_a, ["timeout", "delay", "to", "ease", "from", "in", "children"]);
+    var defaultStyle = useCSSStyle({
+        willChange: "backdrop-filter",
+        transition: "\n      backdrop-filter ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms,\n      opacity ").concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"), // Why opacity you may ask? Because duck this backdrop-filter! That's why!
+    }, [timeout, delay]);
     var transitionStyle = useMemo(function () { return ({
         entering: {
             backdropFilter: "blur(".concat(to, ")"),

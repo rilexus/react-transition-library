@@ -29,9 +29,7 @@ var SlideYTransition = function (_a) {
     var children = _a.children, from = _a.from, to = _a.to, _b = _a.ease, ease = _b === void 0 ? Ease.ease : _b, _c = _a.delay, delay = _c === void 0 ? 0 : _c, timeout = _a.timeout, props = __rest(_a, ["children", "from", "to", "ease", "delay", "timeout"]);
     var defaultStyle = useCSSStyle({
         willChange: "transform",
-        transitionTimingFunction: "".concat(ease),
-        transitionDelay: "".concat(delay, "ms"),
-        transition: "transform ".concat(timeout, "ms"),
+        transition: "transform ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
         transform: "translateY(".concat(from, ")"),
     }, [from, timeout, ease, delay]);
     var transitionStyle = useMemo(function () { return ({

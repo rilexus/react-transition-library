@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { typographyBold2XL } from "../../theme";
-import { margin } from "../../theme/margin";
+import { typographyBold8XL } from "../../theme";
 
 const PageTitle = styled.h1`
-  ${typographyBold2XL};
-  margin-bottom: ${margin(5)};
+  ${typographyBold8XL};
 `;
 
 export { PageTitle };

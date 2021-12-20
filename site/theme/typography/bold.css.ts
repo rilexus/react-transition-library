@@ -6,6 +6,7 @@ import {
   text5XLCss,
   text6XLCss,
   text7XLCss,
+  text8XLCss,
   textBaseCss,
   textLGCss,
   textSMCss,
@@ -64,6 +65,11 @@ const typographyBold7XL = css`
   ${text7XLCss};
 `;
 
+const typographyBold8XL = css`
+  ${fontBoldCss};
+  ${text8XLCss};
+`;
+
 export {
   typographyBoldLG,
   typographyBoldBase,
@@ -76,4 +82,5 @@ export {
   typographyBold5XL,
   typographyBold6XL,
   typographyBold7XL,
+  typographyBold8XL,
 };

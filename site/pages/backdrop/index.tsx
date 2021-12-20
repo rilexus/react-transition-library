@@ -1,47 +1,38 @@
 import React from "react";
-import { useToggle } from "../../hooks";
-import { BackdropTransition } from "../../../transitions";
-import { PageTitle } from "../../components";
+import { usePageTitleAnimation } from "../../hooks";
+import { BackdropTransition, FadeInTransition } from "../../../transitions";
+import { AnimateButton, FullPageCenter, PageTitle } from "../../components";
 
 const BackdropExample = () => {
-  const [show, toggle] = useToggle(false);
+  const { register, toggle } = usePageTitleAnimation();
   return (
-    <div>
-      <PageTitle>Backdrop</PageTitle>
-      <div
-        style={{
-          width: "30vw",
-          position: "relative",
-        }}
-      >
-        <BackdropTransition
-          timeout={400}
-          from={"0px"}
-          to={"10px"}
-          in={show}
-          style={{
-            position: "absolute",
-            inset: 0,
-            pointerEvents: "none",
-          }}
-        />
+    <FullPageCenter>
+      <div>
         <div
           style={{
-            padding: "2rem",
+            position: "relative",
+            padding: "3rem",
           }}
         >
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-            autem blanditiis eveniet illo ipsum laudantium necessitatibus nulla
-            omnis praesentium qui. Aliquid aut corporis culpa cumque earum hic,
-            laudantium sapiente voluptate!
-          </p>
+          <BackdropTransition
+            {...register}
+            from={"0px"}
+            to={"10px"}
+            style={{
+              position: "absolute",
+              inset: 0,
+              pointerEvents: "none",
+            }}
+          />
+          <div>
+            <FadeInTransition in appear to={1} from={0} timeout={999}>
+              <PageTitle>Backdrop</PageTitle>
+            </FadeInTransition>
+          </div>
         </div>
+        <AnimateButton onClick={toggle} />
       </div>
-      <div>
-        <button onClick={toggle}>Animate</button>
-      </div>
-    </div>
+    </FullPageCenter>
   );
 };
 

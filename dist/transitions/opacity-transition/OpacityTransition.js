@@ -41,7 +41,7 @@ var OpacityTransition = function (_a) {
         },
     }); }, [from, to]);
     var defaultStyle = useMemo(function () { return ({
-        willChange: "opacity",
+        // willChange: "opacity", // NOTE: this value interferes with the backdrop filter. If the backdrop is positioned absolute over the OpacityTransition, backdrop does not animate.
         transition: "opacity ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
     }); }, [timeout, delay, ease]);
     return (_jsx(Transition, __assign({}, props, { timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "OpacityTransition" }, { children: children }), void 0));

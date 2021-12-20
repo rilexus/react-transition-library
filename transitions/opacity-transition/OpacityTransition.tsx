@@ -37,7 +37,7 @@ const OpacityTransition: FC<OpacityTransitionProps> = ({
 
   const defaultStyle = useMemo<CSSProperties>(
     () => ({
-      willChange: "opacity",
+      // willChange: "opacity", // NOTE: this value interferes with the backdrop filter. If the backdrop is positioned absolute over the OpacityTransition, backdrop does not animate.
       transition: `opacity ${timeout}ms ${ease} ${delay}ms`,
     }),
     [timeout, delay, ease]

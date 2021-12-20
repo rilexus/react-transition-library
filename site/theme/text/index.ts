@@ -47,6 +47,11 @@ const text7XLCss = css`
   line-height: 1;
 `;
 
+const text8XLCss = css`
+  font-size: 5rem;
+  line-height: 1;
+`;
+
 export {
   textXSCss,
   textSMCss,
@@ -59,4 +64,5 @@ export {
   text5XLCss,
   text6XLCss,
   text7XLCss,
+  text8XLCss,
 };
