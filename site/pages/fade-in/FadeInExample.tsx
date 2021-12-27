@@ -1,7 +1,12 @@
 import React from "react";
 import { usePageTitleAnimation } from "../../hooks";
 import { FadeInTransition } from "../../../transitions";
-import { AnimateButton, FullPageCenter, PageTitle } from "../../components";
+import {
+  AnimateButton,
+  FullPageCenter,
+  PageTitle,
+  TextCenter,
+} from "../../components";
 
 const FadeInExample = () => {
   const { register, toggle } = usePageTitleAnimation();
@@ -15,7 +20,9 @@ const FadeInExample = () => {
         <FadeInTransition from={0} to={1} {...register}>
           <PageTitle>Fade in</PageTitle>
         </FadeInTransition>
-        <AnimateButton onClick={toggle} />
+        <TextCenter>
+          <AnimateButton onClick={toggle} />
+        </TextCenter>
       </div>
     </FullPageCenter>
   );

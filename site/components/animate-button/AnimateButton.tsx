@@ -1,17 +1,10 @@
 import React, { ButtonHTMLAttributes, FC } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { FadeInTransition } from "../../../transitions/fade-in-transition";
 import { useCSSStyle } from "../../../hooks";
 
-const ButtonStyled = styled.button`
-  border: none;
-  background: none;
-  color: white;
-  cursor: pointer;
-  font-size: 1rem;
-
+const ButtonHoverTransitionCss = css`
   transition: transform 200ms, color 200ms;
-
   &:hover {
     color: #bdbdbd;
     transform: scale(0.97);
@@ -21,6 +14,22 @@ const ButtonStyled = styled.button`
     transform: scale(0.94);
     color: #737373;
   }
+`;
+
+const StylessButtonCss = css`
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+`;
+
+const ButtonStyled = styled.button`
+  ${StylessButtonCss};
+  ${ButtonHoverTransitionCss};
+  background-color: #343434;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.2rem;
 `;
 
 const AnimateButton: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({

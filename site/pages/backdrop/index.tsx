@@ -1,7 +1,12 @@
 import React from "react";
 import { usePageTitleAnimation } from "../../hooks";
-import { BackdropTransition, FadeInTransition } from "../../../transitions";
-import { AnimateButton, FullPageCenter, PageTitle } from "../../components";
+import { BackdropTransition } from "../../../transitions";
+import {
+  AnimateButton,
+  AnimatedPageTitle,
+  FullPageCenter,
+  TextCenter,
+} from "../../components";
 
 const BackdropExample = () => {
   const { register, toggle } = usePageTitleAnimation();
@@ -26,12 +31,12 @@ const BackdropExample = () => {
             }}
           />
           <div>
-            <FadeInTransition in appear to={1} from={0} timeout={999}>
-              <PageTitle>Backdrop</PageTitle>
-            </FadeInTransition>
+            <AnimatedPageTitle>Backdrop</AnimatedPageTitle>
           </div>
         </div>
-        <AnimateButton onClick={toggle} />
+        <TextCenter>
+          <AnimateButton onClick={toggle} />
+        </TextCenter>
       </div>
     </FullPageCenter>
   );

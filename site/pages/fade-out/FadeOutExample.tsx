@@ -1,23 +1,27 @@
 import React from "react";
 import { FadeOutTransition } from "../../../transitions";
-import { useToggle } from "../../hooks";
-import { PageTitle } from "../../components";
+import { usePageTitleAnimation } from "../../hooks";
+import {
+  AnimateButton,
+  AnimatedPageTitle,
+  FullPageCenter,
+  TextCenter,
+} from "../../components";
 
 const FadeOutExample = () => {
-  const [show, toggle] = useToggle();
+  const { register, toggle } = usePageTitleAnimation();
+
   return (
-    <div>
-      <PageTitle>Fade out</PageTitle>
-      <FadeOutTransition from={1} to={0} timeout={400} in={show}>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias cum
-          eius nisi reiciendis veritatis. Architecto, aspernatur autem
-          cupiditate dignissimos facere fugiat in minima minus molestias
-          possimus, quod sed tempora temporibus?
-        </p>
-      </FadeOutTransition>
-      <button onClick={toggle}>animate</button>
-    </div>
+    <FullPageCenter>
+      <div>
+        <FadeOutTransition {...register} from={1} to={0}>
+          <AnimatedPageTitle>Fade out</AnimatedPageTitle>
+        </FadeOutTransition>
+        <TextCenter>
+          <AnimateButton onClick={toggle} />
+        </TextCenter>
+      </div>
+    </FullPageCenter>
   );
 };
 

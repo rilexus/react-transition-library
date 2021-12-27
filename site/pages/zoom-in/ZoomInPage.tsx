@@ -1,23 +1,26 @@
 import React from "react";
-import { useToggle } from "../../hooks";
+import { usePageTitleAnimation } from "../../hooks";
 import { ZoomInTransition } from "../../../transitions";
-import { AnimateButton, PageTitle } from "../../components";
+import {
+  AnimateButton,
+  AnimatedPageTitle,
+  FullPageCenter,
+  TextCenter,
+} from "../../components";
 
 const ZoomInPage = () => {
-  const [show, toggle] = useToggle();
+  const { register, toggle } = usePageTitleAnimation();
   return (
-    <div>
-      <PageTitle>Zoom In</PageTitle>
-      <ZoomInTransition from={0} to={1} timeout={400} in={show}>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-          assumenda beatae consequuntur et eum ex ipsa itaque iure magni modi
-          necessitatibus nihil, non omnis possimus, quisquam quos similique, ut
-          veritatis.
-        </p>
-      </ZoomInTransition>
-      <AnimateButton onClick={toggle} />
-    </div>
+    <FullPageCenter>
+      <div>
+        <ZoomInTransition {...register} from={0} to={1}>
+          <AnimatedPageTitle>Zoom In</AnimatedPageTitle>
+        </ZoomInTransition>
+        <TextCenter>
+          <AnimateButton onClick={toggle} />
+        </TextCenter>
+      </div>
+    </FullPageCenter>
   );
 };
 

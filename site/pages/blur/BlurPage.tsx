@@ -1,21 +1,26 @@
 import React from "react";
 import { BlurTransition } from "../../../transitions";
-import { useToggle } from "../../hooks";
-import { AnimateButton, PageTitle } from "../../components";
+import { usePageTitleAnimation } from "../../hooks";
+import {
+  AnimateButton,
+  AnimatedPageTitle,
+  FullPageCenter,
+  TextCenter,
+} from "../../components";
 
 const BlurPage = () => {
-  const [show, toggle] = useToggle();
+  const { register, toggle } = usePageTitleAnimation();
   return (
-    <div>
-      <PageTitle>Blur</PageTitle>
-      <BlurTransition to={"7px"} from={"0px"} as={"p"} in={show} timeout={400}>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam
-        blanditiis error fugit ipsam ipsum itaque molestias mollitia numquam
-        praesentium quidem reiciendis saepe sed similique unde ut, veniam
-        veritatis vero.
-      </BlurTransition>
-      <AnimateButton onClick={toggle} />
-    </div>
+    <FullPageCenter>
+      <div>
+        <BlurTransition {...register} from={"0px"} to={"10px"}>
+          <AnimatedPageTitle>Blur</AnimatedPageTitle>
+        </BlurTransition>
+        <TextCenter>
+          <AnimateButton onClick={toggle} />
+        </TextCenter>
+      </div>
+    </FullPageCenter>
   );
 };
 

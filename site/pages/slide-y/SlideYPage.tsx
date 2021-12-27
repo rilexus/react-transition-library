@@ -1,6 +1,11 @@
 import React from "react";
 import { usePageTitleAnimation } from "../../hooks";
-import { AnimateButton, FullPageCenter, PageTitle } from "../../components";
+import {
+  AnimateButton,
+  FullPageCenter,
+  PageTitle,
+  TextCenter,
+} from "../../components";
 import { SlideYTransition } from "../../../transitions";
 
 const SlideYPage = () => {
@@ -30,7 +35,9 @@ const SlideYPage = () => {
             <PageTitle>Slide Y</PageTitle>
           </SlideYTransition>
         </div>
-        <AnimateButton onClick={toggle} />
+        <TextCenter>
+          <AnimateButton onClick={toggle} />
+        </TextCenter>
       </div>
     </FullPageCenter>
   );
