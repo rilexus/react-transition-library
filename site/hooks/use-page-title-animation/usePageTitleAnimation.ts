@@ -17,14 +17,15 @@ const usePageTitleAnimation = (): P => {
     in: true,
   });
 
+  const { in: _in, delay, timeout } = state;
   return {
     toggle: () => {
       setState((p) => ({ ...p, in: !p.in }));
     },
     register: {
-      in: state.in,
-      delay: state.delay,
-      timeout: state.timeout,
+      in: _in,
+      delay: delay,
+      timeout: timeout,
       onEntered: () => {
         setState((p) => ({ ...p, delay: 0, timeout: 400 }));
       },

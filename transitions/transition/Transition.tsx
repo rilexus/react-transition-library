@@ -11,7 +11,16 @@ import { TransitionFactoryPropsType } from "./TransitionProps.type";
 
 const Transition = forwardRef<HTMLElement, TransitionFactoryPropsType>(
   (
-    { children, defaultStyle, transitionStyle, className, as, style, ...props },
+    {
+      children,
+      defaultStyle,
+      transitionStyle,
+      className,
+      as,
+      style,
+      addEndListener,
+      ...props
+    },
     outsideRef: any
   ) => {
     const [_in, _setIn] = useState(false);
@@ -39,7 +48,16 @@ const Transition = forwardRef<HTMLElement, TransitionFactoryPropsType>(
     }, [nodeRef, outsideRef]);
 
     return (
-      <RTGTransition {...props} in={_in} nodeRef={nodeRef}>
+      <RTGTransition
+        {...props}
+        in={_in}
+        nodeRef={nodeRef}
+        addEndListener={(done: any) => {
+          if (addEndListener) {
+            addEndListener(nodeRef.current as any, done);
+          }
+        }}
+      >
         {(transitionStatus: TransitionStatusType) => {
           return createElement(
             as || "div",

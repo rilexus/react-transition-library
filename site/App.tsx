@@ -14,9 +14,10 @@ import {
   ZoomOutPage,
 } from "./pages";
 import { NavbarLeft } from "./components/navbar-left";
-import { navbarLeftWidth } from "./components/consts";
+// import { navbarLeftWidth } from "./components/consts";
 import { SlideYPage } from "./pages/slide-y";
 import { margin } from "./theme/margin";
+import { ShakeInPage } from "./pages/shake-in";
 
 const AnimationTypeTitle = styled.h5`
   ${typographyBoldBase};
@@ -26,9 +27,9 @@ const AnimationTypeTitle = styled.h5`
 const Page: FC = ({ children }) => {
   return (
     <div
-      style={{
-        paddingLeft: `${navbarLeftWidth + 20}px`,
-      }}
+    // style={{
+    //   paddingLeft: `${navbarLeftWidth + 20}px`,
+    // }}
     >
       {children}
     </div>
@@ -44,6 +45,9 @@ const App = () => {
         <Ul>
           <Li>
             <Link to={"/"}>Home</Link>
+          </Li>
+          <Li>
+            <Link to={"/shake"}>Shake</Link>
           </Li>
           <Li>
             <AnimationTypeTitle>Filter</AnimationTypeTitle>
@@ -103,6 +107,7 @@ const App = () => {
             <Route path={"/zoomout"} element={<ZoomOutPage />} />
             <Route path={"/slidey"} element={<SlideYPage />} />
             <Route path={"/blur"} element={<BlurPage />} />
+            <Route path="/shake" element={<ShakeInPage />} />
             <Route path="*" element={<Navigate to={"/"} />} />
           </Routes>
         </Page>
