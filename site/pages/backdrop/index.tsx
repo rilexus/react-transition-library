@@ -16,6 +16,7 @@ const BackdropExample = () => {
         >
           <BackdropTransition
             {...register}
+            backgroundColor={"#00000003"}
             from={"0px"}
             to={"10px"}
             style={{

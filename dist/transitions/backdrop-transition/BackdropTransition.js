@@ -29,29 +29,26 @@ import { Transition } from "../transition";
  * It does not play well with other transitions. Especially with the opacity.
  * */
 var BackdropTransition = function (_a) {
-    var timeout = _a.timeout, _b = _a.delay, delay = _b === void 0 ? 0 : _b, to = _a.to, _c = _a.ease, ease = _c === void 0 ? "ease" : _c, from = _a.from, _in = _a.in, children = _a.children, props = __rest(_a, ["timeout", "delay", "to", "ease", "from", "in", "children"]);
+    var timeout = _a.timeout, _b = _a.delay, delay = _b === void 0 ? 0 : _b, to = _a.to, _c = _a.ease, ease = _c === void 0 ? "ease" : _c, from = _a.from, backgroundColor = _a.backgroundColor, children = _a.children, props = __rest(_a, ["timeout", "delay", "to", "ease", "from", "backgroundColor", "children"]);
     var defaultStyle = useCSSStyle({
         willChange: "backdrop-filter",
-        transition: "\n      backdrop-filter ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms,\n      opacity ").concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"), // Why opacity you may ask? Because duck this backdrop-filter! That's why!
+        backgroundColor: backgroundColor,
+        transition: "\n      backdrop-filter ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms\n      "),
     }, [timeout, delay]);
     var transitionStyle = useMemo(function () { return ({
         entering: {
             backdropFilter: "blur(".concat(to, ")"),
-            opacity: 1,
         },
         entered: {
             backdropFilter: "blur(".concat(to, ")"),
-            opacity: 1,
         },
         exiting: {
             backdropFilter: "blur(".concat(from, ")"),
-            opacity: 0,
         },
         exited: {
             backdropFilter: "blur(".concat(from, ")"),
-            opacity: 0,
         },
     }); }, [from, to]);
-    return (_jsx(Transition, __assign({}, props, { in: _in, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle }, { children: children }), void 0));
+    return (_jsx(Transition, __assign({}, props, { timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle }, { children: children }), void 0));
 };
 export { BackdropTransition };

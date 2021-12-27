@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
-import { basename } from "../env";
+import { basename, production } from "../env";
 
 ReactDOM.render(
-  <BrowserRouter basename={basename}>
+  <BrowserRouter basename={production ? basename : ""}>
     <App />
   </BrowserRouter>,
   document.getElementById("root")

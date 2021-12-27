@@ -1,2 +1,4 @@
 var basename = "/react-transition-library";
-export { basename };
+var production = process.env.production;
+var development = process.env.development;
+export { basename, production, development };

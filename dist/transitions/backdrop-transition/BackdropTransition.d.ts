@@ -1,8 +1,14 @@
-/// <reference types="react" />
+import { FC } from "react";
+import { TransitionProps } from "../transition/TransitionProps.type";
+declare type BackdropTransitionProps = TransitionProps & {
+    from: string;
+    to: string;
+    backgroundColor: string;
+};
 /**
  * NOTE: css backdrop-filter transition is a ducking bitch!
  * It does not play well with other transitions. Especially with the opacity.
  * */
-declare const BackdropTransition: ({ timeout, delay, to, ease, from, in: _in, children, ...props }: any) => JSX.Element;
+declare const BackdropTransition: FC<BackdropTransitionProps>;
 export { BackdropTransition };
 //# sourceMappingURL=BackdropTransition.d.ts.map
