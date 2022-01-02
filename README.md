@@ -1,12 +1,13 @@
 # React-Transitions-Library
 
 ## Installation
+Install `react-tranisions-library` via `yarn` or `npm`
 ### yarn
-```bash
+```sh
 yarn add react-transitions-library react-transition-group
 ```
 ### npm
-```bash
+```sh
 npm install react-transitions-library react-transition-group
 ```
 
@@ -14,8 +15,17 @@ npm install react-transitions-library react-transition-group
 [Homepage](https://rilexus.github.io/react-transition-library/)
 
 ## Available Transition
+* OpacityTransition
 * [FadeInTransition](transitions/fade-in-transition/README.md)
+* FadeOutTransition
+* ZoomTransition
 * [ZoomInTransition](transitions/zoom-in-transition/README.md)
+* ZoomOutTransition
+* BackdropTransition
+* BlurTransition
+* ScaleInTransition
+* ScaleOutTransition
+* SlideYTransition
 
 ## Examples
 ### Single Transition
