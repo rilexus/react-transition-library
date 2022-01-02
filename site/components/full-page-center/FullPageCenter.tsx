@@ -4,7 +4,7 @@ import { useCSSStyle } from "../../../hooks";
 const FullPageCenter: FC = ({ children }) => {
   const s = useCSSStyle(
     {
-      height: "100vh",
+      paddingTop: "40vh",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",

@@ -25,15 +25,7 @@ const AnimationTypeTitle = styled.h5`
 `;
 
 const Page: FC = ({ children }) => {
-  return (
-    <div
-    // style={{
-    //   paddingLeft: `${navbarLeftWidth + 20}px`,
-    // }}
-    >
-      {children}
-    </div>
-  );
+  return <div>{children}</div>;
 };
 
 const App = () => {

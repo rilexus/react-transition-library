@@ -1,6 +1,6 @@
 {
   "name": "react-transitions-library",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "license": "MIT",
   "description": "A react component library for animations.",
   "author": "Stanislav Panchenko <email@stanislavpanchenko.de>",
@@ -47,7 +47,8 @@
     "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "react-code-blocks": "^0.0.9-0"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

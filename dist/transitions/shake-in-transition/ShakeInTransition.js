@@ -25,7 +25,11 @@ import { useEffect, useMemo } from "react";
 import { Transition } from "../transition";
 import { Ease } from "../../ease";
 import { useCSSStyle } from "../../hooks";
-var getShakeKeyframe = function (from, to) { return "@keyframes ShakeInTransition {\n  0% {\n    -webkit-transform: translateX(".concat(from, ");\n    transform: translateX(").concat(from, ");\n  }\n\n  6.5% {\n    -webkit-transform: translateX(((").concat(to, " * 0.2) + ").concat(to, ") * -1)) rotateY(-9deg);\n    transform: translateX(calc(((").concat(to, " * 0.2) + ").concat(to, ") * -1)) rotateY(-9deg);\n  }\n\n  18.5% {\n    -webkit-transform: translateX(").concat(to, ") rotateY(7deg);\n    transform: translateX(").concat(to, ") rotateY(7deg);\n  }\n\n  31.5% {\n    -webkit-transform: translateX(calc((").concat(to, " / 2) * -1)) rotateY(-5deg);\n    transform: translateX(calc((").concat(to, " / 2) * -1)) rotateY(-5deg);\n  }\n\n  43.5% {\n    -webkit-transform: translateX(calc(").concat(to, " / 3)) rotateY(3deg);\n    transform: translateX(calc(").concat(to, " / 3)) rotateY(3deg);\n  }\n\n  50% {\n    -webkit-transform: translateX(").concat(from, ");\n    transform: translateX(").concat(from, ");\n  }\n}"); };
+var styleIndex = 0;
+var getShakeKeyframe = function (from, to) {
+    styleIndex++;
+    return "@keyframes ShakeInTransition".concat(styleIndex, " {\n  0% {\n    -webkit-transform: translateX(").concat(from, ");\n    transform: translateX(").concat(from, ");\n  }\n\n  6.5% {\n    -webkit-transform: translateX(((").concat(to, " * 0.2) + ").concat(to, ") * -1)) rotateY(-9deg);\n    transform: translateX(calc(((").concat(to, " * 0.2) + ").concat(to, ") * -1)) rotateY(-9deg);\n  }\n\n  18.5% {\n    -webkit-transform: translateX(").concat(to, ") rotateY(7deg);\n    transform: translateX(").concat(to, ") rotateY(7deg);\n  }\n\n  31.5% {\n    -webkit-transform: translateX(calc((").concat(to, " / 2) * -1)) rotateY(-5deg);\n    transform: translateX(calc((").concat(to, " / 2) * -1)) rotateY(-5deg);\n  }\n\n  43.5% {\n    -webkit-transform: translateX(calc(").concat(to, " / 3)) rotateY(3deg);\n    transform: translateX(calc(").concat(to, " / 3)) rotateY(3deg);\n  }\n\n  50% {\n    -webkit-transform: translateX(").concat(from, ");\n    transform: translateX(").concat(from, ");\n  }\n}");
+};
 var ShakeInTransition = function (_a) {
     var children = _a.children, from = _a.from, to = _a.to, timeout = _a.timeout, _b = _a.ease, ease = _b === void 0 ? Ease.ease : _b, _c = _a.delay, delay = _c === void 0 ? 0 : _c, props = __rest(_a, ["children", "from", "to", "timeout", "ease", "delay"]);
     var shakeKeyFrame = useMemo(function () { return getShakeKeyframe(from, to); }, [from, to]);
@@ -40,10 +44,10 @@ var ShakeInTransition = function (_a) {
     }, []);
     var transitionStyle = useMemo(function () { return ({
         entering: {
-            animation: "ShakeInTransition ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
+            animation: "ShakeInTransition".concat(styleIndex, " ").concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
         },
         entered: {
-            animation: "ShakeInTransition ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
+            animation: "ShakeInTransition".concat(styleIndex, " ").concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
         },
         exiting: {
             animation: "",

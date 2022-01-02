@@ -4,10 +4,9 @@ import { Ease } from "../../ease";
 import { useCSSStyle } from "../../hooks";
 import { TransitionProps } from "../transition/TransitionProps.type";
 
-const getShakeKeyframe = (
-  from: string,
-  to: string
-) => `@keyframes ShakeOutTransition {
+let styleIndex = 0;
+const getShakeKeyframe = (from: string, to: string) => {
+  return `@keyframes ShakeOutTransition${styleIndex} {
   0% {
     -webkit-transform: translateX(${from});
     transform: translateX(${from});
@@ -38,6 +37,7 @@ const getShakeKeyframe = (
     transform: translateX(${from});
   }
 }`;
+};
 
 type ShakeOutTransitionProps = TransitionProps & {
   to: string;
@@ -77,10 +77,10 @@ const ShakeOutTransition: FC<ShakeOutTransitionProps> = ({
         animation: ``,
       },
       exiting: {
-        animation: `ShakeOutTransition ${timeout}ms ${ease} ${delay}ms`,
+        animation: `ShakeOutTransition${styleIndex} ${timeout}ms ${ease} ${delay}ms`,
       },
       exited: {
-        animation: `ShakeOutTransition ${timeout}ms ${ease} ${delay}ms`,
+        animation: `ShakeOutTransition${styleIndex} ${timeout}ms ${ease} ${delay}ms`,
       },
     }),
     [delay, timeout, ease]
