@@ -12,7 +12,7 @@ npm install react-transitions-library react-transition-group
 ```
 
 ## Docs
-[Homepage](https://rilexus.github.io/react-transition-library/)
+[Homepage](https://rilexus.github.io/react-transitions-library/)
 
 ## Available Transition
 * OpacityTransition
