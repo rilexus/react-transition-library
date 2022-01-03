@@ -82,7 +82,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"basename\": () => (/* binding */ basename),\n/* harmony export */   \"production\": () => (/* binding */ production),\n/* harmony export */   \"development\": () => (/* binding */ development)\n/* harmony export */ });\nvar basename = \"/react-transition-library\";\nvar production = true;\nvar development = undefined;\n\n\n//# sourceURL=webpack://react-transitions-library/./env.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"basename\": () => (/* binding */ basename),\n/* harmony export */   \"production\": () => (/* binding */ production),\n/* harmony export */   \"development\": () => (/* binding */ development)\n/* harmony export */ });\nvar basename = \"/react-transitions-library\";\nvar production = true;\nvar development = undefined;\n\n\n//# sourceURL=webpack://react-transitions-library/./env.ts?");
 
 /***/ }),
 
