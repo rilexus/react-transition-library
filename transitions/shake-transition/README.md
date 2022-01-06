@@ -5,7 +5,7 @@ import { ShakeTransition } from "react-transitions-library";
 const ShakeTransitionExample = () => {
   const [animate, setAnimate] = useState(false);
   return (
-  	<div>
+    <div>
       <ShakeTransition 
         in={animate} 
         delay={1000}
@@ -20,7 +20,7 @@ const ShakeTransitionExample = () => {
       >
         Animate
       </button>
-  	</div>
+    </div>
   );
 }
 ```
