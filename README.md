@@ -18,6 +18,8 @@ npm install react-transitions-library react-transition-group
 * OpacityTransition
 * [FadeInTransition](transitions/fade-in-transition/README.md)
 * FadeOutTransition
+* FadeInUpTransition
+* FadeOutDownTransition
 * ZoomTransition
 * [ZoomInTransition](transitions/zoom-in-transition/README.md)
 * ZoomOutTransition
