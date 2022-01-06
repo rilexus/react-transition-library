@@ -1,4 +1,9 @@
-import React, { FC, useMemo } from "react";
+import React, {
+  FC,
+  forwardRef,
+  ForwardRefExoticComponent,
+  useMemo,
+} from "react";
 import { Transition } from "../transition";
 import { useCSSStyle } from "../../hooks";
 import { Ease } from "../../ease";
@@ -9,49 +14,48 @@ type BlurTransitionProps = TransitionProps & {
   from: string;
 };
 
-const BlurTransition: FC<BlurTransitionProps> = ({
-  children,
-  timeout,
-  delay = 0,
-  from,
-  to,
-  ease = Ease.ease,
-  ...props
-}) => {
-  const defaultStyle = useCSSStyle(
-    {
-      willChange: "filter",
-      transition: `filter ${timeout}ms ${ease} ${delay}ms`,
-    },
-    [timeout, delay, ease]
-  );
+const BlurTransition: ForwardRefExoticComponent<BlurTransitionProps> =
+  forwardRef<HTMLElement, BlurTransitionProps>(
+    (
+      { children, timeout, delay = 0, from, to, ease = Ease.ease, ...props },
+      outsideRef
+    ) => {
+      const defaultStyle = useCSSStyle(
+        {
+          willChange: "filter",
+          transition: `filter ${timeout}ms ${ease} ${delay}ms`,
+        },
+        [timeout, delay, ease]
+      );
 
-  const transitionStyle = useMemo(
-    () => ({
-      entering: {
-        filter: `blur(${to})`,
-      },
-      entered: {
-        filter: `blur(${to})`,
-      },
-      exiting: {
-        filter: `blur(${from})`,
-      },
-      exited: {
-        filter: `blur(${from})`,
-      },
-    }),
-    [from, to]
+      const transitionStyle = useMemo(
+        () => ({
+          entering: {
+            filter: `blur(${to})`,
+          },
+          entered: {
+            filter: `blur(${to})`,
+          },
+          exiting: {
+            filter: `blur(${from})`,
+          },
+          exited: {
+            filter: `blur(${from})`,
+          },
+        }),
+        [from, to]
+      );
+      return (
+        <Transition
+          {...props}
+          ref={outsideRef}
+          timeout={timeout}
+          defaultStyle={defaultStyle}
+          transitionStyle={transitionStyle}
+        >
+          {children}
+        </Transition>
+      );
+    }
   );
-  return (
-    <Transition
-      {...props}
-      timeout={timeout}
-      defaultStyle={defaultStyle}
-      transitionStyle={transitionStyle}
-    >
-      {children}
-    </Transition>
-  );
-};
 export { BlurTransition };

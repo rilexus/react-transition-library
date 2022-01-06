@@ -1,0 +1,1 @@
+{"version":3,"file":"useHover.d.ts","sourceRoot":"","sources":["../../../hooks/use-hover/useHover.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAA6B,MAAM,OAAO,CAAC;AAIpE,iBAAS,QAAQ,CAAC,eAAe,SAAS,WAAW,KAAK;IACxD,GAAG,EAAE,gBAAgB,CAAC,eAAe,CAAC,CAAC;IACvC,EAAE,EAAE,OAAO,CAAC;CACb,CAmBA;AAED,OAAO,EAAE,QAAQ,EAAE,CAAC"}

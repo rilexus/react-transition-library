@@ -21,11 +21,11 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { useMemo } from "react";
+import { forwardRef, useMemo, } from "react";
 import { useCSSStyle } from "../../hooks";
 import { Transition } from "../transition";
 import { Ease } from "../../ease";
-var SlideYTransition = function (_a) {
+var SlideYTransition = forwardRef(function (_a, outsideRef) {
     var children = _a.children, from = _a.from, to = _a.to, _b = _a.ease, ease = _b === void 0 ? Ease.ease : _b, _c = _a.delay, delay = _c === void 0 ? 0 : _c, timeout = _a.timeout, props = __rest(_a, ["children", "from", "to", "ease", "delay", "timeout"]);
     var defaultStyle = useCSSStyle({
         willChange: "transform",
@@ -46,6 +46,6 @@ var SlideYTransition = function (_a) {
             transform: "translateY(".concat(from, ")"),
         },
     }); }, [from, to]);
-    return (_jsx(Transition, __assign({}, props, { timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "ScaleInUpTransition" }, { children: children }), void 0));
-};
+    return (_jsx(Transition, __assign({}, props, { ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "ScaleInUpTransition" }, { children: children }), void 0));
+});
 export { SlideYTransition };

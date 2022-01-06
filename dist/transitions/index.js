@@ -8,6 +8,8 @@ export * from "./transition-group";
 export * from "./opacity-transition";
 export * from "./fade-out-transition";
 export * from "./fade-in-transition";
+export * from "./fade-in-up-transition";
+export * from "./fade-out-down-transition";
 export * from "./css-transition/CSSTransition";
 export * from "./scale-transition";
 export * from "./zoom-in-transition";

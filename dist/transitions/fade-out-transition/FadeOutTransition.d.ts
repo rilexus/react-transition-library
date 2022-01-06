@@ -1,5 +1,5 @@
 import React from "react";
-declare const FadeOutTransition: React.FC<import("../transition/TransitionProps.type").TransitionProps<undefined> & {
+declare const FadeOutTransition: React.ForwardRefExoticComponent<import("../transition/TransitionProps.type").TransitionProps<undefined> & {
     from: number;
     to: number;
 }>;

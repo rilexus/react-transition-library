@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { ForwardRefExoticComponent } from "react";
 import { TransitionProps } from "../transition/TransitionProps.type";
 declare type ZoomTransitionProps = TransitionProps & {
     delay?: number;
@@ -7,6 +7,6 @@ declare type ZoomTransitionProps = TransitionProps & {
     to: number;
     transformOrigin?: string;
 };
-declare const ZoomTransition: FC<ZoomTransitionProps>;
+declare const ZoomTransition: ForwardRefExoticComponent<ZoomTransitionProps>;
 export { ZoomTransition };
 //# sourceMappingURL=ZoomTransition.d.ts.map

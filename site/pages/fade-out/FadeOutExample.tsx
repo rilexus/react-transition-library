@@ -15,7 +15,7 @@ const FadeOutExample = () => {
     <FullPageCenter>
       <div>
         <FadeOutTransition {...register} from={1} to={0}>
-          <AnimatedPageTitle>Fade out</AnimatedPageTitle>
+          <AnimatedPageTitle>Fade Out</AnimatedPageTitle>
         </FadeOutTransition>
         <TextCenter>
           <AnimateButton onClick={toggle} />

@@ -18,7 +18,7 @@ const FadeInExample = () => {
         }}
       >
         <FadeInTransition from={0} to={1} {...register}>
-          <PageTitle>Fade in</PageTitle>
+          <PageTitle>Fade In</PageTitle>
         </FadeInTransition>
         <TextCenter>
           <AnimateButton onClick={toggle} />

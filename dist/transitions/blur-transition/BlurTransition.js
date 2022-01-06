@@ -21,11 +21,11 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { useMemo } from "react";
+import { forwardRef, useMemo, } from "react";
 import { Transition } from "../transition";
 import { useCSSStyle } from "../../hooks";
 import { Ease } from "../../ease";
-var BlurTransition = function (_a) {
+var BlurTransition = forwardRef(function (_a, outsideRef) {
     var children = _a.children, timeout = _a.timeout, _b = _a.delay, delay = _b === void 0 ? 0 : _b, from = _a.from, to = _a.to, _c = _a.ease, ease = _c === void 0 ? Ease.ease : _c, props = __rest(_a, ["children", "timeout", "delay", "from", "to", "ease"]);
     var defaultStyle = useCSSStyle({
         willChange: "filter",
@@ -45,6 +45,6 @@ var BlurTransition = function (_a) {
             filter: "blur(".concat(from, ")"),
         },
     }); }, [from, to]);
-    return (_jsx(Transition, __assign({}, props, { timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle }, { children: children }), void 0));
-};
+    return (_jsx(Transition, __assign({}, props, { ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle }, { children: children }), void 0));
+});
 export { BlurTransition };

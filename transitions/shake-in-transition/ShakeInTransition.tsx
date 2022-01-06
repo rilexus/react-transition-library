@@ -1,5 +1,10 @@
-import React, { CSSProperties, FC, useEffect, useMemo } from "react";
-import { css, keyframes } from "styled-components";
+import React, {
+  forwardRef,
+  ForwardRefExoticComponent,
+  useEffect,
+  useMemo,
+} from "react";
+
 import { Transition } from "../transition";
 import { Ease } from "../../ease";
 import { useCSSStyle } from "../../hooks";
@@ -46,59 +51,61 @@ type ShakeInTransitionProps = TransitionProps & {
   from: string;
 };
 
-const ShakeInTransition: FC<ShakeInTransitionProps> = ({
-  children,
-  from,
-  to,
-  timeout,
-  ease = Ease.ease,
-  delay = 0,
-  ...props
-}) => {
-  const shakeKeyFrame = useMemo(() => getShakeKeyframe(from, to), [from, to]);
-  useEffect(() => {
-    const sheet = document.styleSheets[0];
-    sheet.insertRule(shakeKeyFrame, sheet.cssRules.length);
-  }, [shakeKeyFrame]);
+const ShakeInTransition: ForwardRefExoticComponent<ShakeInTransitionProps> =
+  forwardRef<HTMLElement, ShakeInTransitionProps>(
+    (
+      { children, from, to, timeout, ease = Ease.ease, delay = 0, ...props },
+      outsideRef
+    ) => {
+      const shakeKeyFrame = useMemo(
+        () => getShakeKeyframe(from, to),
+        [from, to]
+      );
+      useEffect(() => {
+        const sheet = document.styleSheets[0];
+        sheet.insertRule(shakeKeyFrame, sheet.cssRules.length);
+      }, [shakeKeyFrame]);
 
-  const defaultStyle = useCSSStyle(
-    {
-      animationIterationCount: 1,
-      animationFillMode: "forwards",
-      animationDirection: "normal",
-    },
-    []
-  );
+      const defaultStyle = useCSSStyle(
+        {
+          animationIterationCount: 1,
+          animationFillMode: "forwards",
+          animationDirection: "normal",
+        },
+        []
+      );
 
-  const transitionStyle = useMemo(
-    () => ({
-      entering: {
-        animation: `ShakeInTransition${styleIndex} ${timeout}ms ${ease} ${delay}ms`,
-      },
-      entered: {
-        animation: `ShakeInTransition${styleIndex} ${timeout}ms ${ease} ${delay}ms`,
-      },
-      exiting: {
-        animation: ``,
-      },
-      exited: {
-        animation: ``,
-      },
-    }),
-    [timeout, ease, delay]
-  );
+      const transitionStyle = useMemo(
+        () => ({
+          entering: {
+            animation: `ShakeInTransition${styleIndex} ${timeout}ms ${ease} ${delay}ms`,
+          },
+          entered: {
+            animation: `ShakeInTransition${styleIndex} ${timeout}ms ${ease} ${delay}ms`,
+          },
+          exiting: {
+            animation: ``,
+          },
+          exited: {
+            animation: ``,
+          },
+        }),
+        [timeout, ease, delay]
+      );
 
-  return (
-    <Transition
-      {...props}
-      timeout={timeout}
-      defaultStyle={defaultStyle}
-      transitionStyle={transitionStyle}
-      className={"ShakeInTransition"}
-    >
-      {children}
-    </Transition>
+      return (
+        <Transition
+          {...props}
+          ref={outsideRef}
+          timeout={timeout}
+          defaultStyle={defaultStyle}
+          transitionStyle={transitionStyle}
+          className={"ShakeInTransition"}
+        >
+          {children}
+        </Transition>
+      );
+    }
   );
-};
 
 export { ShakeInTransition };

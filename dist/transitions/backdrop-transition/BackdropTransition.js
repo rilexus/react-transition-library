@@ -21,14 +21,14 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { useMemo } from "react";
+import { forwardRef, useMemo, } from "react";
 import { useCSSStyle } from "../../hooks";
 import { Transition } from "../transition";
 /**
  * NOTE: css backdrop-filter transition is a ducking bitch!
  * It does not play well with other transitions. Especially with the opacity.
  * */
-var BackdropTransition = function (_a) {
+var BackdropTransition = forwardRef(function (_a, outsideRef) {
     var timeout = _a.timeout, _b = _a.delay, delay = _b === void 0 ? 0 : _b, to = _a.to, _c = _a.ease, ease = _c === void 0 ? "ease" : _c, from = _a.from, backgroundColor = _a.backgroundColor, children = _a.children, props = __rest(_a, ["timeout", "delay", "to", "ease", "from", "backgroundColor", "children"]);
     var defaultStyle = useCSSStyle({
         willChange: "backdrop-filter",
@@ -49,6 +49,6 @@ var BackdropTransition = function (_a) {
             backdropFilter: "blur(".concat(from, ")"),
         },
     }); }, [from, to]);
-    return (_jsx(Transition, __assign({}, props, { timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle }, { children: children }), void 0));
-};
+    return (_jsx(Transition, __assign({}, props, { timeout: timeout, ref: outsideRef, defaultStyle: defaultStyle, transitionStyle: transitionStyle }, { children: children }), void 0));
+});
 export { BackdropTransition };
