@@ -1,13 +1,12 @@
 import React, {
   CSSProperties,
-  FC,
   forwardRef,
   ForwardRefExoticComponent,
   useMemo,
 } from "react";
 import { Transition } from "../transition/Transition";
-import { TransitionProps } from "../transition/TransitionProps.type";
 import { Ease } from "../../ease";
+import { TransitionProps } from "../transition/TransitionProps.type";
 
 type OpacityTransitionProps = TransitionProps & {
   from: number;

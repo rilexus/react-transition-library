@@ -28,6 +28,7 @@ npm install react-transitions-library react-transition-group
 * ScaleInTransition
 * ScaleOutTransition
 * SlideYTransition
+* [ShakeTransition](transitions/shake-transition/README.md)
 
 ## Examples
 ### Single Transition
@@ -35,13 +36,13 @@ npm install react-transitions-library react-transition-group
 const Example = () => {
     const [show, setShow] = useState(false);
     return (
-        <div>
-            <FadeInTransition timeout={400} from={0} to={1}>
-                React Transitions Library
-            </FadeInTransition>
-            <button onClick={() => setShow(true)}>in</button>
-            <button onClick={() => setShow(false)}>out</button>
-        </div> 
+    	<div>
+          <FadeInTransition timeout={400} from={0} to={1}>
+            React Transitions Library
+          </FadeInTransition>
+          <button onClick={() => setShow(true)}>in</button>
+          <button onClick={() => setShow(false)}>out</button>
+    	</div> 
     );
 }
 ```

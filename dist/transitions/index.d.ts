@@ -3,6 +3,7 @@ export * from "./fallback-transition";
 export * from "./scale-down-transition";
 export * from "./shake-in-transition";
 export * from "./shake-out-transition";
+export * from "./shake-transition";
 export * from "./transition/Transition";
 export * from "./transition-group";
 export * from "./opacity-transition";

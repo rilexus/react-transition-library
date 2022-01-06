@@ -4,7 +4,7 @@ import { padding } from "../../theme/padding";
 
 const Li = styled.li`
   padding-left: ${padding("50")};
-  margin-bottom: ${margin("4")};
+  margin-bottom: ${margin(4)};
 `;
 
 export { Li };

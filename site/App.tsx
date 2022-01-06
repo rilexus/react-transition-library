@@ -18,7 +18,7 @@ import {
 import { NavbarLeft } from "./components/navbar-left";
 import { SlideYPage } from "./pages/slide-y";
 import { margin } from "./theme/margin";
-import { ShakeInPage } from "./pages/shake-in";
+import { ShakePage } from "./pages/shake";
 
 const AnimationTypeTitleCss = css`
   ${typographyBoldBase};
@@ -127,7 +127,7 @@ const App = () => {
             <Route path={"/zoomout"} element={<ZoomOutPage />} />
             <Route path={"/slidey"} element={<SlideYPage />} />
             <Route path={"/blur"} element={<BlurPage />} />
-            <Route path="/shake" element={<ShakeInPage />} />
+            <Route path="/shake" element={<ShakePage />} />
             <Route path="*" element={<Navigate to={"/"} />} />
           </Routes>
         </Page>
