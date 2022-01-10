@@ -1,13 +1,4 @@
-import React, {
-  CSSProperties,
-  FC,
-  forwardRef,
-  ForwardRefExoticComponent,
-  useMemo,
-} from "react";
-import { useCSSStyle } from "../../hooks";
-import { Transition } from "../transition";
-import { Ease } from "../../ease";
+import React, { forwardRef, ForwardRefExoticComponent } from "react";
 import { TransitionProps } from "../transition/TransitionProps.type";
 import { TranslateTransition } from "../translate-transition";
 

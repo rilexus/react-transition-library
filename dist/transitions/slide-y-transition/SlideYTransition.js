@@ -21,7 +21,7 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { forwardRef, } from "react";
+import { forwardRef } from "react";
 import { TranslateTransition } from "../translate-transition";
 var SlideYTransition = forwardRef(function (_a, outsideRef) {
     var children = _a.children, from = _a.from, to = _a.to, props = __rest(_a, ["children", "from", "to"]);
