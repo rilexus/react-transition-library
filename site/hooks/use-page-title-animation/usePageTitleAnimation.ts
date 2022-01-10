@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Ease } from "../../../ease";
 
 type P = {
   toggle: () => void;
@@ -6,6 +7,7 @@ type P = {
     in: boolean;
     delay: number;
     timeout: number;
+    ease: Ease;
     onEntered: () => void;
   };
 };
@@ -26,6 +28,7 @@ const usePageTitleAnimation = (): P => {
       in: _in,
       delay: delay,
       timeout: timeout,
+      ease: Ease.ease,
       onEntered: () => {
         setState((p) => ({ ...p, delay: 0, timeout: 400 }));
       },

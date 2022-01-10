@@ -12,6 +12,7 @@ import {
   FadeOutDownPage,
   FadeOutExample,
   Home,
+  TranslatePage,
   ZoomInPage,
   ZoomOutPage,
 } from "./pages";
@@ -71,6 +72,14 @@ const App = () => {
                 </Ul>
               </Li>
               <Li>
+                <AnimationTypeTitle>Translate</AnimationTypeTitle>
+                <Ul>
+                  <Li>
+                    <Link to={"/translate"}>Translate</Link>
+                  </Li>
+                </Ul>
+              </Li>
+              <Li>
                 <AnimationTypeTitle>Slide</AnimationTypeTitle>
                 <Ul>
                   <Li>
@@ -126,6 +135,7 @@ const App = () => {
             <Route path={"/zoomin"} element={<ZoomInPage />} />
             <Route path={"/zoomout"} element={<ZoomOutPage />} />
             <Route path={"/slidey"} element={<SlideYPage />} />
+            <Route path={"/translate"} element={<TranslatePage />} />
             <Route path={"/blur"} element={<BlurPage />} />
             <Route path="/shake" element={<ShakePage />} />
             <Route path="*" element={<Navigate to={"/"} />} />

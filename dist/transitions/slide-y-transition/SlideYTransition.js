@@ -21,31 +21,10 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { forwardRef, useMemo, } from "react";
-import { useCSSStyle } from "../../hooks";
-import { Transition } from "../transition";
-import { Ease } from "../../ease";
+import { forwardRef, } from "react";
+import { TranslateTransition } from "../translate-transition";
 var SlideYTransition = forwardRef(function (_a, outsideRef) {
-    var children = _a.children, from = _a.from, to = _a.to, _b = _a.ease, ease = _b === void 0 ? Ease.ease : _b, _c = _a.delay, delay = _c === void 0 ? 0 : _c, timeout = _a.timeout, props = __rest(_a, ["children", "from", "to", "ease", "delay", "timeout"]);
-    var defaultStyle = useCSSStyle({
-        willChange: "transform",
-        transition: "transform ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
-        transform: "translateY(".concat(from, ")"),
-    }, [from, timeout, ease, delay]);
-    var transitionStyle = useMemo(function () { return ({
-        entering: {
-            transform: "translateY(".concat(to, ")"),
-        },
-        entered: {
-            transform: "translateY(".concat(to, ")"),
-        },
-        exiting: {
-            transform: "translateY(".concat(from, ")"),
-        },
-        exited: {
-            transform: "translateY(".concat(from, ")"),
-        },
-    }); }, [from, to]);
-    return (_jsx(Transition, __assign({}, props, { ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "ScaleInUpTransition" }, { children: children }), void 0));
+    var children = _a.children, from = _a.from, to = _a.to, props = __rest(_a, ["children", "from", "to"]);
+    return (_jsx(TranslateTransition, __assign({}, props, { ref: outsideRef, from: ["0px", from], to: ["0px", to] }, { children: children }), void 0));
 });
 export { SlideYTransition };

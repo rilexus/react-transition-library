@@ -16,6 +16,7 @@ export * from "./scale-transition";
 export * from "./zoom-in-transition";
 export * from "./zoom-transition";
 export * from "./zoom-out-transition";
+export * from "./translate-transition";
 export * from "./slide-y-transition";
 export * from "./blur-transition";
 export * from "./backdrop-transition";

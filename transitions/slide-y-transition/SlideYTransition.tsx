@@ -9,6 +9,7 @@ import { useCSSStyle } from "../../hooks";
 import { Transition } from "../transition";
 import { Ease } from "../../ease";
 import { TransitionProps } from "../transition/TransitionProps.type";
+import { TranslateTransition } from "../translate-transition";
 
 type SlideYTransitionProps = TransitionProps & {
   from: string;
@@ -17,46 +18,16 @@ type SlideYTransitionProps = TransitionProps & {
 
 const SlideYTransition: ForwardRefExoticComponent<SlideYTransitionProps> =
   forwardRef<HTMLElement, SlideYTransitionProps>(
-    (
-      { children, from, to, ease = Ease.ease, delay = 0, timeout, ...props },
-      outsideRef
-    ) => {
-      const defaultStyle = useCSSStyle(
-        {
-          willChange: "transform",
-          transition: `transform ${timeout}ms ${ease} ${delay}ms`,
-          transform: `translateY(${from})`,
-        },
-        [from, timeout, ease, delay]
-      );
-      const transitionStyle = useMemo(
-        () => ({
-          entering: {
-            transform: `translateY(${to})`,
-          },
-          entered: {
-            transform: `translateY(${to})`,
-          },
-          exiting: {
-            transform: `translateY(${from})`,
-          },
-          exited: {
-            transform: `translateY(${from})`,
-          },
-        }),
-        [from, to]
-      );
+    ({ children, from, to, ...props }, outsideRef) => {
       return (
-        <Transition
+        <TranslateTransition
           {...props}
           ref={outsideRef}
-          timeout={timeout}
-          defaultStyle={defaultStyle}
-          transitionStyle={transitionStyle}
-          className={"ScaleInUpTransition"}
+          from={["0px", from]}
+          to={["0px", to]}
         >
           {children}
-        </Transition>
+        </TranslateTransition>
       );
     }
   );
