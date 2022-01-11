@@ -13,7 +13,11 @@ const Title = styled.h1`
   ${typographyBold7XL};
   font-size: 10rem;
   color: inherit;
-  padding: 1rem;
+  // padding: 1rem;
+  // text-rendering: optimizeLegibility;
+
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 `;
 
 const TitleTransition = ({ children, ...props }: any) => {
@@ -40,7 +44,6 @@ const Border: FC<HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
       border: "1px solid #2a2a2a",
       padding: "1rem 2rem",
       borderRadius: ".75rem",
-
       ...props.style,
     },
     []
@@ -76,15 +79,15 @@ const CopyArea: FC<{ value: string }> = ({ children, value }) => {
   );
 };
 const Styled = styled.span`
-  display: inline-block;
+  // font-feature-settings: "kern","liga","clig","calt"; // needs to be present on the body css. fuck safari!
   background-image: url(${({ url }) => url});
+  background-color: ${({ url }) => (url ? "transparent" : "black")};
+  display: inline-block;
   color: transparent;
-  background-color: transparent;
-  background-clip: text !important;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background-clip: text;
   -webkit-background-clip: text;
+  background-size: cover;
+  background-position: center center;
 `;
 const TextOverlay: FC = ({ children, url }) => {
   return <Styled url={url}>{children}</Styled>;
