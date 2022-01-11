@@ -1,5 +1,5 @@
 import { FadeInTransition } from "../../../transitions/fade-in-transition";
-import React, { FC, HTMLAttributes, useCallback } from "react";
+import React, { FC, HTMLAttributes, useCallback, useState } from "react";
 import styled from "styled-components";
 import { typographyBold7XL } from "../../theme";
 import { TransitionGroup } from "react-transition-group";
@@ -7,15 +7,19 @@ import { BlurTransition, ZoomTransition } from "../../../transitions";
 import { Ease } from "../../../ease";
 import { useCSSStyle } from "../../../hooks";
 import { VerticalDivider, WordButton } from "../../components";
+import { v4 as uuidv4 } from "uuid";
 
 const Title = styled.h1`
-  ${typographyBold7XL}
+  ${typographyBold7XL};
+  font-size: 10rem;
+  color: inherit;
+  padding: 1rem;
 `;
 
 const TitleTransition = ({ children, ...props }: any) => {
   return (
     <BlurTransition {...props} timeout={700} to={"0px"} from={"10px"}>
-      <FadeInTransition {...props} from={0} timeout={1000} to={1}>
+      <FadeInTransition {...props} from={0} timeout={700} to={1}>
         <ZoomTransition
           {...props}
           from={0.8}
@@ -71,8 +75,40 @@ const CopyArea: FC<{ value: string }> = ({ children, value }) => {
     </Border>
   );
 };
+const Styled = styled.span`
+  display: inline-block;
+  background-image: url(${({ url }) => url});
+  color: transparent;
+  background-color: transparent;
+  background-clip: text !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-clip: text;
+`;
+const TextOverlay: FC = ({ children, url }) => {
+  return <Styled url={url}>{children}</Styled>;
+};
+
+const OverlayChildren = styled.div`
+  display: grid;
+  & > * {
+    grid-area: 1/1;
+  }
+`;
 
 const Home = () => {
+  const [hoverIndex, setHoerIndex] = useState(0);
+
+  const urls = [
+    "https://media.giphy.com/media/l0MYuXX9btbEsA2S4/giphy.gif",
+    "https://media.giphy.com/media/l0CLUrZiblFUBMMrC/giphy.gif",
+    "https://media.giphy.com/media/FOdT4x8rHYAqQ/giphy.gif",
+    "https://media.giphy.com/media/2bXyklhc7qQv0dTVXr/giphy.gif",
+    "https://media.giphy.com/media/sQ5jimwRnCqkw/giphy.gif",
+    "https://media.giphy.com/media/5xtDarBIj5VKfNRJt8k/giphy.gif",
+    "https://media.giphy.com/media/5ciuhhe0rQva8/giphy.gif",
+  ];
   return (
     <div
       style={{
@@ -87,10 +123,44 @@ const Home = () => {
         >
           <TransitionGroup>
             <TitleTransition appear delay={1000}>
-              <Title>
-                <div>React</div>
-                <div>Transitions Library</div>
-              </Title>
+              <div
+                style={{
+                  margin: "0 auto",
+                  maxWidth: "900px",
+                }}
+              >
+                <div>
+                  <OverlayChildren>
+                    <TextOverlay url={urls[hoverIndex]}>
+                      <Title>
+                        React <br />
+                        Transitions Library
+                      </Title>
+                    </TextOverlay>
+
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-evenly",
+                      }}
+                    >
+                      {urls.map((_, idx) => {
+                        return (
+                          <div
+                            key={uuidv4()}
+                            onMouseEnter={() => {
+                              setHoerIndex(idx);
+                            }}
+                            style={{
+                              flexGrow: 1,
+                            }}
+                          />
+                        );
+                      })}
+                    </div>
+                  </OverlayChildren>
+                </div>
+              </div>
             </TitleTransition>
             <TitleTransition appear delay={1700}>
               <div
@@ -110,7 +180,7 @@ const Home = () => {
                     <h2
                       style={{
                         fontWeight: "300",
-                        fontSize: "2rem",
+                        fontSize: "1.5rem",
                       }}
                     >
                       Installation
