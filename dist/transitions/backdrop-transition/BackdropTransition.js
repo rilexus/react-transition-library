@@ -33,19 +33,23 @@ var BackdropTransition = forwardRef(function (_a, outsideRef) {
     var defaultStyle = useCSSStyle({
         willChange: "backdrop-filter",
         backgroundColor: backgroundColor,
-        transition: "\n      backdrop-filter ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms\n      "),
+        transition: "backdrop-filter ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms, -webkit-backdrop-filter ").concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
     }, [timeout, delay]);
     var transitionStyle = useMemo(function () { return ({
         entering: {
+            WebkitBackdropFilter: "blur(".concat(to, ")"),
             backdropFilter: "blur(".concat(to, ")"),
         },
         entered: {
+            WebkitBackdropFilter: "blur(".concat(to, ")"),
             backdropFilter: "blur(".concat(to, ")"),
         },
         exiting: {
+            WebkitBackdropFilter: "blur(".concat(from, ")"),
             backdropFilter: "blur(".concat(from, ")"),
         },
         exited: {
+            WebkitBackdropFilter: "blur(".concat(from, ")"),
             backdropFilter: "blur(".concat(from, ")"),
         },
     }); }, [from, to]);

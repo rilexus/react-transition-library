@@ -37,9 +37,7 @@ const BackdropTransition: ForwardRefExoticComponent<BackdropTransitionProps> =
         {
           willChange: "backdrop-filter",
           backgroundColor,
-          transition: `
-      backdrop-filter ${timeout}ms ${ease} ${delay}ms
-      `,
+          transition: `backdrop-filter ${timeout}ms ${ease} ${delay}ms, -webkit-backdrop-filter ${timeout}ms ${ease} ${delay}ms`,
         },
         [timeout, delay]
       );
@@ -47,15 +45,19 @@ const BackdropTransition: ForwardRefExoticComponent<BackdropTransitionProps> =
       const transitionStyle = useMemo(
         () => ({
           entering: {
+            WebkitBackdropFilter: `blur(${to})`,
             backdropFilter: `blur(${to})`,
           },
           entered: {
+            WebkitBackdropFilter: `blur(${to})`,
             backdropFilter: `blur(${to})`,
           },
           exiting: {
+            WebkitBackdropFilter: `blur(${from})`,
             backdropFilter: `blur(${from})`,
           },
           exited: {
+            WebkitBackdropFilter: `blur(${from})`,
             backdropFilter: `blur(${from})`,
           },
         }),

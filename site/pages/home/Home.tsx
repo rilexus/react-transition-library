@@ -14,10 +14,7 @@ const Title = styled.h1`
   font-size: 10rem;
   color: inherit;
   // padding: 1rem;
-  // text-rendering: optimizeLegibility;
-
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  // text-rendering: optimizeLegibility
 `;
 
 const TitleTransition = ({ children, ...props }: any) => {
@@ -79,7 +76,7 @@ const CopyArea: FC<{ value: string }> = ({ children, value }) => {
   );
 };
 const Styled = styled.span`
-  // font-feature-settings: "kern","liga","clig","calt"; // needs to be present on the body css. fuck safari!
+  font-variant: contextual;
   background-image: url(${({ url }) => url});
   background-color: ${({ url }) => (url ? "transparent" : "black")};
   display: inline-block;

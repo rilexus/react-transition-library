@@ -23,10 +23,6 @@ const GlobalCss = createGlobalStyle`
   i {
 	  font-style: italic;
   }
-  body {
-    font-feature-settings: "kern","liga","clig","calt";
-    font-kerning: normal;
-  }
 `;
 
 export { GlobalCss };
