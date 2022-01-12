@@ -1,12 +1,9 @@
-import { FC } from "react";
+import { ForwardRefExoticComponent } from "react";
+import { TransitionProps } from "../transition/TransitionProps.type";
 declare type Props = {
-    timeout: number;
-    delay?: number;
-    in: boolean;
     from: number;
     to: number;
-    appear?: boolean;
-};
-declare const ScaleTransition: FC<Props>;
+} & TransitionProps;
+declare const ScaleTransition: ForwardRefExoticComponent<Props>;
 export { ScaleTransition };
 //# sourceMappingURL=ScaleTransition.d.ts.map

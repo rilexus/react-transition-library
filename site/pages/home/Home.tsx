@@ -1,21 +1,14 @@
 import { FadeInTransition } from "../../../transitions/fade-in-transition";
 import React, { FC, HTMLAttributes, useCallback, useState } from "react";
-import styled from "styled-components";
-import { typographyBold7XL } from "../../theme";
-import { TransitionGroup } from "react-transition-group";
-import { BlurTransition, ZoomTransition } from "../../../transitions";
+import {
+  BlurTransition,
+  ScaleTransition,
+  ZoomTransition,
+} from "../../../transitions";
 import { Ease } from "../../../ease";
 import { useCSSStyle } from "../../../hooks";
 import { VerticalDivider, WordButton } from "../../components";
-import { v4 as uuidv4 } from "uuid";
-
-const Title = styled.h1`
-  ${typographyBold7XL};
-  font-size: 10rem;
-  color: inherit;
-  // padding: 1rem;
-  // text-rendering: optimizeLegibility
-`;
+import { RTLTitle } from "./components";
 
 const TitleTransition = ({ children, ...props }: any) => {
   return (
@@ -52,12 +45,16 @@ const Border: FC<HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
   );
 };
 
-const CopyArea: FC<{ value: string }> = ({ children, value }) => {
+const CopyArea: FC<{ value: string } & HTMLAttributes<HTMLDivElement>> = ({
+  children,
+  value,
+  ...props
+}) => {
   const handleClick = useCallback(async () => {
     await navigator.clipboard.writeText(value);
   }, [value]);
   return (
-    <Border>
+    <Border {...props}>
       <div
         style={{
           display: "flex",
@@ -75,146 +72,114 @@ const CopyArea: FC<{ value: string }> = ({ children, value }) => {
     </Border>
   );
 };
-const Styled = styled.span`
-  font-variant: contextual;
-  background-image: url(${({ url }) => url});
-  background-color: ${({ url }) => (url ? "transparent" : "black")};
-  display: inline-block;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-size: cover;
-  background-position: center center;
-`;
-const TextOverlay: FC = ({ children, url }) => {
-  return <Styled url={url}>{children}</Styled>;
-};
-
-const OverlayChildren = styled.div`
-  display: grid;
-  & > * {
-    grid-area: 1/1;
-  }
-`;
 
 const Home = () => {
-  const [hoverIndex, setHoerIndex] = useState(0);
-
-  const urls = [
-    "https://media.giphy.com/media/l0MYuXX9btbEsA2S4/giphy.gif",
-    "https://media.giphy.com/media/l0CLUrZiblFUBMMrC/giphy.gif",
-    "https://media.giphy.com/media/FOdT4x8rHYAqQ/giphy.gif",
-    "https://media.giphy.com/media/2bXyklhc7qQv0dTVXr/giphy.gif",
-    "https://media.giphy.com/media/sQ5jimwRnCqkw/giphy.gif",
-    "https://media.giphy.com/media/5xtDarBIj5VKfNRJt8k/giphy.gif",
-    "https://media.giphy.com/media/5ciuhhe0rQva8/giphy.gif",
-  ];
+  const [over, setOver] = useState(false);
+  const [overYarn, setOverYarn] = useState(false);
   return (
-    <div
-      style={{
-        paddingTop: "20vh",
-      }}
-    >
-      <div>
-        <div
-          style={{
-            textAlign: "center",
-          }}
-        >
-          <TransitionGroup>
-            <TitleTransition appear delay={1000}>
-              <div
-                style={{
-                  margin: "0 auto",
-                  maxWidth: "900px",
-                }}
-              >
-                <div>
-                  <OverlayChildren>
-                    <TextOverlay url={urls[hoverIndex]}>
-                      <Title>
-                        React <br />
-                        Transitions Library
-                      </Title>
-                    </TextOverlay>
+    <div>
+      <div
+        style={{
+          textAlign: "center",
+        }}
+      >
+        <TitleTransition appear delay={1000} in>
+          <div
+            style={{
+              margin: "0 auto",
+              maxWidth: "900px",
+            }}
+          >
+            <div
+              style={{
+                marginTop: "20vh",
+              }}
+            >
+              <RTLTitle />
+            </div>
+          </div>
+        </TitleTransition>
 
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-evenly",
-                      }}
-                    >
-                      {urls.map((_, idx) => {
-                        return (
-                          <div
-                            key={uuidv4()}
-                            onMouseEnter={() => {
-                              setHoerIndex(idx);
-                            }}
-                            style={{
-                              flexGrow: 1,
-                            }}
-                          />
-                        );
-                      })}
-                    </div>
-                  </OverlayChildren>
-                </div>
-              </div>
-            </TitleTransition>
-            <TitleTransition appear delay={1700}>
-              <div
-                style={{
-                  marginTop: "3rem",
-                  textAlign: "center",
-                  lineHeight: 1.3,
-                }}
-              >
-                <section
+        <TitleTransition appear delay={1700} in>
+          <div
+            style={{
+              marginTop: "10vh",
+              textAlign: "center",
+              lineHeight: 1.3,
+            }}
+          >
+            <section
+              style={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <div>
+                <h2
                   style={{
-                    display: "flex",
-                    justifyContent: "center",
+                    fontWeight: "300",
+                    fontSize: "1.5rem",
                   }}
                 >
-                  <div>
-                    <h2
-                      style={{
-                        fontWeight: "300",
-                        fontSize: "1.5rem",
-                      }}
-                    >
-                      Installation
-                    </h2>
-                    <VerticalDivider />
-                    <div>
-                      <pre>
-                        <code>
-                          <CopyArea
-                            value={
-                              "npm install react-transitions-library react-transition-group"
-                            }
-                          >
-                            npm install react-transitions-library
-                            react-transition-group
-                          </CopyArea>
-                          <VerticalDivider />
-                          <CopyArea
-                            value={
-                              "yarn add react-transitions-library react-transition-group"
-                            }
-                          >
-                            yarn add react-transitions-library
-                            react-transition-group
-                          </CopyArea>
-                        </code>
-                      </pre>
-                    </div>
-                  </div>
-                </section>
+                  Installation
+                </h2>
+                <VerticalDivider />
+                <div>
+                  <pre>
+                    <code>
+                      <ScaleTransition
+                        timeout={400}
+                        in={over}
+                        from={1}
+                        to={1.05}
+                      >
+                        <CopyArea
+                          style={{
+                            zIndex: 200,
+                          }}
+                          onMouseEnter={() => {
+                            setOver(true);
+                          }}
+                          onMouseLeave={() => {
+                            setOver(false);
+                          }}
+                          value={
+                            "npm install react-transitions-library react-transition-group"
+                          }
+                        >
+                          npm install react-transitions-library
+                          react-transition-group
+                        </CopyArea>
+                      </ScaleTransition>
+                      <VerticalDivider />
+                      <ScaleTransition
+                        timeout={700}
+                        in={overYarn}
+                        from={1}
+                        to={1.05}
+                      >
+                        <CopyArea
+                          onMouseEnter={() => {
+                            setOverYarn(true);
+                          }}
+                          onMouseLeave={() => {
+                            setOverYarn(false);
+                          }}
+                          value={
+                            "yarn add react-transitions-library react-transition-group"
+                          }
+                        >
+                          yarn add react-transitions-library
+                          react-transition-group
+                        </CopyArea>
+                      </ScaleTransition>
+                    </code>
+                  </pre>
+                </div>
               </div>
-            </TitleTransition>
-          </TransitionGroup>
-        </div>
+            </section>
+          </div>
+        </TitleTransition>
       </div>
     </div>
   );

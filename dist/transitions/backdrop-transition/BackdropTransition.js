@@ -21,7 +21,7 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { forwardRef, useMemo, } from "react";
+import { forwardRef, useMemo } from "react";
 import { useCSSStyle } from "../../hooks";
 import { Transition } from "../transition";
 /**
@@ -53,6 +53,7 @@ var BackdropTransition = forwardRef(function (_a, outsideRef) {
             backdropFilter: "blur(".concat(from, ")"),
         },
     }); }, [from, to]);
-    return (_jsx(Transition, __assign({}, props, { timeout: timeout, ref: outsideRef, defaultStyle: defaultStyle, transitionStyle: transitionStyle }, { children: children }), void 0));
+    return (_jsx(Transition, __assign({}, props, { timeout: timeout, ref: outsideRef, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "BackdropTransition" }, { children: children }), void 0));
 });
+BackdropTransition.displayName = "BackdropTransition";
 export { BackdropTransition };

@@ -21,14 +21,14 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import { useMemo } from "react";
+import { forwardRef, useMemo } from "react";
 import { Transition } from "../transition";
-//
-var ScaleTransition = function (_a) {
-    var children = _a.children, timeout = _a.timeout, _b = _a.delay, delay = _b === void 0 ? "0" : _b, _in = _a["in"], from = _a.from, to = _a.to, props = __rest(_a, ["children", "timeout", "delay", "in", "from", "to"]);
+import { Ease } from "../../ease";
+var ScaleTransition = forwardRef(function (_a, outsideRef) {
+    var children = _a.children, timeout = _a.timeout, _b = _a.delay, delay = _b === void 0 ? "0" : _b, _in = _a["in"], from = _a.from, _c = _a.ease, ease = _c === void 0 ? Ease.ease : _c, to = _a.to, props = __rest(_a, ["children", "timeout", "delay", "in", "from", "ease", "to"]);
     var defaultStyle = useMemo(function () { return ({
         transform: "scale(".concat(from, ")"),
-        transition: "transform ".concat(timeout, "ms ease ").concat(delay, "ms"),
+        transition: "transform ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
     }); }, [from, timeout, delay]);
     var transitionStyle = useMemo(function () { return ({
         entered: {
@@ -38,6 +38,7 @@ var ScaleTransition = function (_a) {
             transform: "scale(".concat(to, ")"),
         },
     }); }, [to]);
-    return (_jsx(Transition, __assign({}, props, { in: _in, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle }, { children: children }), void 0));
-};
+    return (_jsx(Transition, __assign({}, props, { in: _in, ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle }, { children: children }), void 0));
+});
+ScaleTransition.displayName = "ScaleTransition";
 export { ScaleTransition };

@@ -1,18 +1,13 @@
-import React, {
-  FC,
-  forwardRef,
-  ForwardRefExoticComponent,
-  useMemo,
-} from "react";
+import React, { forwardRef, ForwardRefExoticComponent, useMemo } from "react";
 import { useCSSStyle } from "../../hooks";
 import { Transition } from "../transition";
 import { TransitionProps } from "../transition/TransitionProps.type";
 
-type BackdropTransitionProps = TransitionProps & {
+type BackdropTransitionProps = {
   from: string;
   to: string;
   backgroundColor: string;
-};
+} & TransitionProps;
 
 /**
  * NOTE: css backdrop-filter transition is a ducking bitch!
@@ -70,11 +65,12 @@ const BackdropTransition: ForwardRefExoticComponent<BackdropTransitionProps> =
           ref={outsideRef}
           defaultStyle={defaultStyle}
           transitionStyle={transitionStyle}
+          className={"BackdropTransition"}
         >
           {children}
         </Transition>
       );
     }
   );
-
+BackdropTransition.displayName = "BackdropTransition";
 export { BackdropTransition };
