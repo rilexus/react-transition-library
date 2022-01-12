@@ -8,3 +8,6 @@ export * from "./blur";
 export * from "./fade-in-up";
 export * from "./fade-out-down";
 export * from "./translate";
+export * from "./scale";
+export * from "./shake";
+export * from "./slide-y";

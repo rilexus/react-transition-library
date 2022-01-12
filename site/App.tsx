@@ -12,14 +12,15 @@ import {
   FadeOutDownPage,
   FadeOutExample,
   Home,
+  ScalePage,
   TranslatePage,
   ZoomInPage,
   ZoomOutPage,
+  ShakePage,
+  SlideYPage,
 } from "./pages";
 import { NavbarLeft } from "./components/navbar-left";
-import { SlideYPage } from "./pages/slide-y";
 import { margin } from "./theme/margin";
-import { ShakePage } from "./pages/shake";
 
 const AnimationTypeTitleCss = css`
   ${typographyBoldBase};
@@ -59,6 +60,9 @@ const App = () => {
             <Ul>
               <Li>
                 <Link to={"/shake"}>Shake</Link>
+              </Li>
+              <Li>
+                <Link to={"/scale"}>Scale</Link>
               </Li>
               <Li>
                 <AnimationTypeTitle>Filter</AnimationTypeTitle>
@@ -138,6 +142,7 @@ const App = () => {
             <Route path={"/translate"} element={<TranslatePage />} />
             <Route path={"/blur"} element={<BlurPage />} />
             <Route path="/shake" element={<ShakePage />} />
+            <Route path="/scale" element={<ScalePage />} />
             <Route path="*" element={<Navigate to={"/"} />} />
           </Routes>
         </Page>

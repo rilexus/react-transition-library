@@ -25,8 +25,7 @@ npm install react-transitions-library react-transition-group
 * ZoomOutTransition
 * BackdropTransition
 * BlurTransition
-* ScaleInTransition
-* ScaleOutTransition
+* [ScaleTransition](transitions/scale-transition/README.md)
 * SlideYTransition
 * [TranslateTransition](transitions/translate-transition/README.md)
 * [ShakeTransition](transitions/shake-transition/README.md)
