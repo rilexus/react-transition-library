@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { navbarLeftWidth, navbarLeftZIndex } from "../consts";
+import { Blur } from "../blur-context";
 
 const NavbarLeft: FC = ({ children }) => {
   return (
@@ -16,7 +17,7 @@ const NavbarLeft: FC = ({ children }) => {
         width: `${navbarLeftWidth}px`,
       }}
     >
-      {children}
+      <Blur name={"navigation"}>{children}</Blur>
     </nav>
   );
 };

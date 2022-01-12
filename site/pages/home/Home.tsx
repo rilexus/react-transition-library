@@ -1,5 +1,5 @@
 import { FadeInTransition } from "../../../transitions/fade-in-transition";
-import React, { FC, HTMLAttributes, useCallback, useState } from "react";
+import React, { FC, HTMLAttributes, useCallback } from "react";
 import {
   BlurTransition,
   ScaleTransition,
@@ -7,7 +7,12 @@ import {
 } from "../../../transitions";
 import { Ease } from "../../../ease";
 import { useCSSStyle } from "../../../hooks";
-import { VerticalDivider, WordButton } from "../../components";
+import {
+  Blur,
+  useBlurContext,
+  VerticalDivider,
+  WordButton,
+} from "../../components";
 import { RTLTitle } from "./components";
 
 const TitleTransition = ({ children, ...props }: any) => {
@@ -74,8 +79,7 @@ const CopyArea: FC<{ value: string } & HTMLAttributes<HTMLDivElement>> = ({
 };
 
 const Home = () => {
-  const [over, setOver] = useState(false);
-  const [overYarn, setOverYarn] = useState(false);
+  const { blur, focus, ...blurred } = useBlurContext();
   return (
     <div>
       <div
@@ -95,7 +99,9 @@ const Home = () => {
                 marginTop: "20vh",
               }}
             >
-              <RTLTitle />
+              <Blur name={"title"}>
+                <RTLTitle />
+              </Blur>
             </div>
           </div>
         </TitleTransition>
@@ -121,7 +127,7 @@ const Home = () => {
                     fontSize: "1.5rem",
                   }}
                 >
-                  Installation
+                  <Blur name={"installation"}>Installation</Blur>
                 </h2>
                 <VerticalDivider />
                 <div>
@@ -129,49 +135,77 @@ const Home = () => {
                     <code>
                       <ScaleTransition
                         timeout={400}
-                        in={over}
+                        in={blurred["yarn"]}
                         from={1}
-                        to={1.05}
+                        to={1.1}
                       >
-                        <CopyArea
-                          style={{
-                            zIndex: 200,
-                          }}
-                          onMouseEnter={() => {
-                            setOver(true);
-                          }}
-                          onMouseLeave={() => {
-                            setOver(false);
-                          }}
-                          value={
-                            "npm install react-transitions-library react-transition-group"
-                          }
-                        >
-                          npm install react-transitions-library
-                          react-transition-group
-                        </CopyArea>
+                        <Blur name={"npm"}>
+                          <CopyArea
+                            style={{
+                              zIndex: 200,
+                            }}
+                            onMouseEnter={() => {
+                              blur([
+                                "title",
+                                "navigation",
+                                "yarn",
+                                "installation",
+                              ]);
+                              // setOver(true);
+                            }}
+                            onMouseLeave={() => {
+                              focus([
+                                "title",
+                                "navigation",
+                                "yarn",
+                                "installation",
+                              ]);
+                              // setOver(false);
+                            }}
+                            value={
+                              "npm install react-transitions-library react-transition-group"
+                            }
+                          >
+                            npm install react-transitions-library
+                            react-transition-group
+                          </CopyArea>
+                        </Blur>
                       </ScaleTransition>
                       <VerticalDivider />
                       <ScaleTransition
                         timeout={700}
-                        in={overYarn}
+                        in={blurred["npm"]}
                         from={1}
-                        to={1.05}
+                        to={1.1}
                       >
-                        <CopyArea
-                          onMouseEnter={() => {
-                            setOverYarn(true);
-                          }}
-                          onMouseLeave={() => {
-                            setOverYarn(false);
-                          }}
-                          value={
-                            "yarn add react-transitions-library react-transition-group"
-                          }
-                        >
-                          yarn add react-transitions-library
-                          react-transition-group
-                        </CopyArea>
+                        <Blur name={"yarn"}>
+                          <CopyArea
+                            onMouseEnter={() => {
+                              blur([
+                                "title",
+                                "navigation",
+                                "npm",
+                                "installation",
+                              ]);
+                              // setOverYarn(true);
+                            }}
+                            onMouseLeave={() => {
+                              focus([
+                                "title",
+                                "navigation",
+                                "npm",
+                                "installation",
+                              ]);
+                              // setOverYarn(false);
+                            }}
+                            value={
+                              "yarn add react-transitions-library react-transition-group"
+                            }
+                          >
+                            yarn add react-transitions-library
+                            react-transition-group
+                          </CopyArea>
+                        </Blur>
                       </ScaleTransition>
                     </code>
                   </pre>
