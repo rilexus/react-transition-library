@@ -133,13 +133,13 @@ const Home = () => {
                 <div>
                   <pre>
                     <code>
-                      <ScaleTransition
-                        timeout={400}
-                        in={blurred["yarn"]}
-                        from={1}
-                        to={1.1}
-                      >
-                        <Blur name={"npm"}>
+                      <Blur name={"npm"}>
+                        <ScaleTransition
+                          timeout={400}
+                          in={blurred["yarn"]}
+                          from={1}
+                          to={1.1}
+                        >
                           <CopyArea
                             style={{
                               zIndex: 200,
@@ -169,16 +169,16 @@ const Home = () => {
                             npm install react-transitions-library
                             react-transition-group
                           </CopyArea>
-                        </Blur>
-                      </ScaleTransition>
+                        </ScaleTransition>
+                      </Blur>
                       <VerticalDivider />
-                      <ScaleTransition
-                        timeout={700}
-                        in={blurred["npm"]}
-                        from={1}
-                        to={1.1}
-                      >
-                        <Blur name={"yarn"}>
+                      <Blur name={"yarn"}>
+                        <ScaleTransition
+                          timeout={700}
+                          in={blurred["npm"]}
+                          from={1}
+                          to={1.1}
+                        >
                           <CopyArea
                             onMouseEnter={() => {
                               blur([
@@ -205,8 +205,8 @@ const Home = () => {
                             yarn add react-transitions-library
                             react-transition-group
                           </CopyArea>
-                        </Blur>
-                      </ScaleTransition>
+                        </ScaleTransition>
+                      </Blur>
                     </code>
                   </pre>
                 </div>
