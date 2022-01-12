@@ -79,7 +79,7 @@ const CopyArea: FC<{ value: string } & HTMLAttributes<HTMLDivElement>> = ({
 };
 
 const Home = () => {
-  const { blur, focus, ...blurred } = useBlurContext();
+  const { blur, focus, blurred } = useBlurContext();
   return (
     <div>
       <div
