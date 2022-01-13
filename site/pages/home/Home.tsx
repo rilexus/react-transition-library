@@ -141,9 +141,6 @@ const Home = () => {
                           to={1.1}
                         >
                           <CopyArea
-                            style={{
-                              zIndex: 200,
-                            }}
                             onMouseEnter={() => {
                               blur([
                                 "title",
@@ -210,6 +207,22 @@ const Home = () => {
                     </code>
                   </pre>
                 </div>
+              </div>
+            </section>
+            <section>
+              <div
+                style={{
+                  marginTop: "2rem",
+                }}
+              >
+                <a
+                  href="https://www.stanislavpanchenko.de"
+                  style={{
+                    fontSize: ".8rem",
+                  }}
+                >
+                  by Stanislav Panchenko
+                </a>
               </div>
             </section>
           </div>
