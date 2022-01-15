@@ -2,7 +2,7 @@
 
 ![](https://media.giphy.com/media/wH7NVwMuB8nTNGSxGs/giphy.gif)
 
-````tsx
+```tsx
 const Example = () => {
     const [show, setShow] = useState(false);
     return (

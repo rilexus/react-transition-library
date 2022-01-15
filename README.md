@@ -24,11 +24,12 @@ npm install react-transitions-library react-transition-group
 * [ZoomInTransition](transitions/zoom-in-transition/README.md)
 * ZoomOutTransition
 * BackdropTransition
-* BlurTransition
+* [BlurTransition](transitions/blur-transition/README.md)
 * [ScaleTransition](transitions/scale-transition/README.md)
 * SlideYTransition
 * [TranslateTransition](transitions/translate-transition/README.md)
 * [ShakeTransition](transitions/shake-transition/README.md)
+* [Custom Transition](transitions/transition/README.md)
 
 ## Examples
 ### Single Transition
@@ -93,3 +94,5 @@ const Example = () => {
     );
 }
 ```
+### Note
+Feel free to create a Pull Request.

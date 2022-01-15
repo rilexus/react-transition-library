@@ -1,4 +1,7 @@
 # Shake Transition Example
+
+![](https://media.giphy.com/media/aoKsF122rsH2wWjsCx/giphy.gif)
+
 ```tsx
 import { ShakeTransition } from "react-transitions-library";
 
