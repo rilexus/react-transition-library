@@ -12,6 +12,7 @@ import { TransitionProps } from "../transition/TransitionProps.type";
 
 let styleIndex = 0;
 const getShakeKeyframe = (from: string, to: string) => {
+  styleIndex++;
   return `@keyframes ShakeOutTransition${styleIndex} {
   0% {
     -webkit-transform: translateX(${from});
@@ -106,5 +107,7 @@ const ShakeOutTransition: ForwardRefExoticComponent<ShakeOutTransitionProps> =
       );
     }
   );
+
+ShakeOutTransition.displayName = "ShakeOutTransition";
 
 export { ShakeOutTransition };

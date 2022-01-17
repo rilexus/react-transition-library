@@ -1,5 +1,5 @@
-import React from "react";
-declare const ZoomInTransition: React.ForwardRefExoticComponent<import("../transition/TransitionProps.type").TransitionProps<undefined> & {
+/// <reference types="react" />
+declare const ZoomInTransition: import("react").ForwardRefExoticComponent<import("../transition/TransitionProps.type").TransitionProps<undefined> & {
     delay?: number | undefined;
     ease?: string | undefined;
     from: number;

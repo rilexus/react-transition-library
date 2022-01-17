@@ -48,4 +48,5 @@ var ZoomTransition = forwardRef(function (_a, outsideRef) {
     }); }, [from, to]);
     return (_jsx(Transition, __assign({}, props, { ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "ZoomInTransition" }, { children: children }), void 0));
 });
+ZoomTransition.displayName = "ZoomTransition";
 export { ZoomTransition };

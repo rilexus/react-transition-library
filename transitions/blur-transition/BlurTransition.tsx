@@ -58,4 +58,6 @@ const BlurTransition: ForwardRefExoticComponent<BlurTransitionProps> =
       );
     }
   );
+
+BlurTransition.displayName = "BlurTransition";
 export { BlurTransition };

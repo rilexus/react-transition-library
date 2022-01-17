@@ -108,4 +108,6 @@ const ShakeInTransition: ForwardRefExoticComponent<ShakeInTransitionProps> =
     }
   );
 
+ShakeInTransition.displayName = "ShakeInTransition";
+
 export { ShakeInTransition };

@@ -54,5 +54,6 @@ const FadeOutDownTransition: ForwardRefExoticComponent<FadeOutDownTransitionProp
       );
     }
   );
+FadeOutDownTransition.displayName = "FadeOutDownTransition";
 
 export { FadeOutDownTransition };

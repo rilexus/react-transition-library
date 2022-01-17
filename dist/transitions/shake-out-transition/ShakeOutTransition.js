@@ -27,6 +27,7 @@ import { Ease } from "../../ease";
 import { useCSSStyle } from "../../hooks";
 var styleIndex = 0;
 var getShakeKeyframe = function (from, to) {
+    styleIndex++;
     return "@keyframes ShakeOutTransition".concat(styleIndex, " {\n  0% {\n    -webkit-transform: translateX(").concat(from, ");\n    transform: translateX(").concat(from, ");\n  }\n\n  6.5% {\n    -webkit-transform: translateX(((").concat(to, " * 0.2) + ").concat(to, ") * -1)) rotateY(-9deg);\n    transform: translateX(calc(((").concat(to, " * 0.2) + ").concat(to, ") * -1)) rotateY(-9deg);\n  }\n\n  18.5% {\n    -webkit-transform: translateX(").concat(to, ") rotateY(7deg);\n    transform: translateX(").concat(to, ") rotateY(7deg);\n  }\n\n  31.5% {\n    -webkit-transform: translateX(calc((").concat(to, " / 2) * -1)) rotateY(-5deg);\n    transform: translateX(calc((").concat(to, " / 2) * -1)) rotateY(-5deg);\n  }\n\n  43.5% {\n    -webkit-transform: translateX(calc(").concat(to, " / 3)) rotateY(3deg);\n    transform: translateX(calc(").concat(to, " / 3)) rotateY(3deg);\n  }\n\n  50% {\n    -webkit-transform: translateX(").concat(from, ");\n    transform: translateX(").concat(from, ");\n  }\n}");
 };
 var ShakeOutTransition = forwardRef(function (_a, outsideRef) {
@@ -57,4 +58,5 @@ var ShakeOutTransition = forwardRef(function (_a, outsideRef) {
     }); }, [delay, timeout, ease]);
     return (_jsx(Transition, __assign({}, props, { ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "ShakeOutTransition" }, { children: children }), void 0));
 });
+ShakeOutTransition.displayName = "ShakeOutTransition";
 export { ShakeOutTransition };

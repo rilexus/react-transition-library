@@ -28,4 +28,5 @@ var FadeInUpTransition = forwardRef(function (_a, outsideRed) {
     var children = _a.children, _b = _a.fadeIn, fadeIn = _b === void 0 ? { timeout: 700, from: 0, to: 1 } : _b, _c = _a.slideY, slideY = _c === void 0 ? { timeout: 700, from: "100%", to: "0%" } : _c, props = __rest(_a, ["children", "fadeIn", "slideY"]);
     return (_jsx(FadeInTransition, __assign({}, props, { ref: outsideRed, from: 0, to: 1, timeout: 700 }, fadeIn, { children: _jsx(SlideYTransition, __assign({}, props, { from: "100%", to: "0%", timeout: 700 }, slideY, { children: children }), void 0) }), void 0));
 });
+FadeInUpTransition.displayName = "FadeInUpTransition";
 export { FadeInUpTransition };

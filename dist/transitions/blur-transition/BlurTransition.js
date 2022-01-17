@@ -47,4 +47,5 @@ var BlurTransition = forwardRef(function (_a, outsideRef) {
     }); }, [from, to]);
     return (_jsx(Transition, __assign({}, props, { ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle }, { children: children }), void 0));
 });
+BlurTransition.displayName = "BlurTransition";
 export { BlurTransition };

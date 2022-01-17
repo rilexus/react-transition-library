@@ -1,5 +1,5 @@
-import React from "react";
-declare const FadeInTransition: React.ForwardRefExoticComponent<import("../transition/TransitionProps.type").TransitionProps<undefined> & {
+/// <reference types="react" />
+declare const FadeInTransition: import("react").ForwardRefExoticComponent<import("../transition/TransitionProps.type").TransitionProps<undefined> & {
     from: number;
     to: number;
 }>;

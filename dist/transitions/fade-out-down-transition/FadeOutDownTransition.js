@@ -38,4 +38,5 @@ var FadeOutDownTransition = forwardRef(function (_a, outsideRef) {
     var children = _a.children, _b = _a.fadeOut, fadeOut = _b === void 0 ? defaultFadeOutProps : _b, _c = _a.slideY, slideY = _c === void 0 ? defaultSlideYProps : _c, props = __rest(_a, ["children", "fadeOut", "slideY"]);
     return (_jsx(FadeOutTransition, __assign({}, props, { ref: outsideRef, timeout: 700, from: 1, to: 0 }, fadeOut, { children: _jsx(SlideYTransition, __assign({}, props, { from: "0%", to: "100%", timeout: 700 }, slideY, { children: children }), void 0) }), void 0));
 });
+FadeOutDownTransition.displayName = "FadeOutDownTransition";
 export { FadeOutDownTransition };

@@ -72,4 +72,6 @@ const ZoomTransition: ForwardRefExoticComponent<ZoomTransitionProps> =
     }
   );
 
+ZoomTransition.displayName = "ZoomTransition";
+
 export { ZoomTransition };

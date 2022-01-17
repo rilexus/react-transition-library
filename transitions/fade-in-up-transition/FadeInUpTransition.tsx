@@ -41,4 +41,7 @@ const FadeInUpTransition: ForwardRefExoticComponent<FadeInUpTransitionProps> =
       );
     }
   );
+
+FadeInUpTransition.displayName = "FadeInUpTransition";
+
 export { FadeInUpTransition };

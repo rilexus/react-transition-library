@@ -59,5 +59,6 @@ const OpacityTransition: ForwardRefExoticComponent<OpacityTransitionProps> =
       );
     }
   );
+OpacityTransition.displayName = "OpacityTransition";
 
 export { OpacityTransition };

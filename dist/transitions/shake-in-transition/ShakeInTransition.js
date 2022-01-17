@@ -58,4 +58,5 @@ var ShakeInTransition = forwardRef(function (_a, outsideRef) {
     }); }, [timeout, ease, delay]);
     return (_jsx(Transition, __assign({}, props, { ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "ShakeInTransition" }, { children: children }), void 0));
 });
+ShakeInTransition.displayName = "ShakeInTransition";
 export { ShakeInTransition };

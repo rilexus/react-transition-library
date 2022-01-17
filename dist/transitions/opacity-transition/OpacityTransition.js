@@ -46,4 +46,5 @@ var OpacityTransition = forwardRef(function (_a, outsideRef) {
     }); }, [timeout, delay, ease]);
     return (_jsx(Transition, __assign({}, props, { ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "OpacityTransition" }, { children: children }), void 0));
 });
+OpacityTransition.displayName = "OpacityTransition";
 export { OpacityTransition };
