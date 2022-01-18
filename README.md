@@ -38,7 +38,7 @@ const Example = () => {
     const [show, setShow] = useState(false);
     return (
     	<div>
-          <FadeInTransition timeout={400} from={0} to={1}>
+          <FadeInTransition timeout={400} from={0} to={1} in={show}>
             React Transitions Library
           </FadeInTransition>
           <button onClick={() => setShow(true)}>in</button>
