@@ -1,4 +1,4 @@
-import { EndHandler, TransitionProps as RTGTransitionProps } from "react-transition-group/Transition";
+import { TransitionProps as RTGTransitionProps } from "react-transition-group/Transition";
 import { TransitionStylesType } from "../../types";
 import { CSSProperties } from "react";
 import { Ease } from "../../ease";
@@ -6,7 +6,6 @@ declare type DynamicTransitionProps<RefElement extends undefined | HTMLElement =
     as?: string;
 };
 declare type TransitionProps<RefElement extends undefined | HTMLElement = undefined> = {
-    addEndListener?: EndHandler<RefElement> | undefined;
     ease?: Ease;
     delay?: number;
 } & DynamicTransitionProps<RefElement>;

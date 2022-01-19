@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { TransitionStatusType } from "../../types";
 import { TransitionFactoryPropsType } from "./TransitionProps.type";
+import { mergeRefs } from "../../utils/mergeRefs";
 
 const Transition = forwardRef<HTMLElement, TransitionFactoryPropsType>(
   (
@@ -42,9 +43,7 @@ const Transition = forwardRef<HTMLElement, TransitionFactoryPropsType>(
     }, [props.in, timeoutRef]);
 
     useEffect(() => {
-      if (nodeRef.current && outsideRef) {
-        outsideRef.current = nodeRef.current;
-      }
+      mergeRefs([nodeRef, outsideRef])(nodeRef.current);
     }, [nodeRef, outsideRef]);
 
     return (

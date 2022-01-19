@@ -13,7 +13,7 @@ type DynamicTransitionProps<
 };
 
 type TransitionProps<RefElement extends undefined | HTMLElement = undefined> = {
-  addEndListener?: EndHandler<RefElement> | undefined;
+  // addEndListener?: EndHandler<RefElement> | undefined;
   ease?: Ease;
   delay?: number;
 } & DynamicTransitionProps<RefElement>;

@@ -21,6 +21,7 @@ import {
 } from "./pages";
 import { NavbarLeft } from "./components/navbar-left";
 import { margin } from "./theme/margin";
+import { Playground } from "./pages/playground";
 
 const AnimationTypeTitleCss = css`
   ${typographyBoldBase};
@@ -132,6 +133,7 @@ const App = () => {
           <Page>
             <Routes>
               <Route path={"/"} element={<Home />} />
+              <Route path={"/playground"} element={<Playground />} />
               <Route path={"/backdrop"} element={<BackdropExample />} />
               <Route path={"/fadein"} element={<FadeInExample />} />
               <Route path={"/fadeout"} element={<FadeOutExample />} />

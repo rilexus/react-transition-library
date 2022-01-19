@@ -17,60 +17,59 @@ type ZoomTransitionProps = TransitionProps & {
   transformOrigin?: string;
 };
 
-const ZoomTransition: ForwardRefExoticComponent<ZoomTransitionProps> =
-  forwardRef<HTMLElement, ZoomTransitionProps>(
-    (
+const ZoomTransition = forwardRef<HTMLElement, ZoomTransitionProps>(
+  (
+    {
+      children,
+      delay = 0,
+      ease = Ease.ease,
+      transformOrigin = "center",
+      from,
+      to,
+      timeout,
+      ...props
+    },
+    outsideRef
+  ) => {
+    const defaultStyle = useCSSStyle(
       {
-        children,
-        delay = 0,
-        ease = Ease.ease,
-        transformOrigin = "center",
-        from,
-        to,
-        timeout,
-        ...props
+        transformOrigin: transformOrigin,
+        willChange: "transform",
+        transition: `transform ${timeout}ms ${ease} ${delay}ms`,
       },
-      outsideRef
-    ) => {
-      const defaultStyle = useCSSStyle(
-        {
-          transformOrigin: transformOrigin,
-          willChange: "transform",
-          transition: `transform ${timeout}ms ${ease} ${delay}ms`,
+      [timeout, ease, delay]
+    );
+    const transitionStyle = useMemo(
+      () => ({
+        entering: {
+          transform: `scale(${to})`,
         },
-        [timeout, ease, delay]
-      );
-      const transitionStyle = useMemo(
-        () => ({
-          entering: {
-            transform: `scale(${to})`,
-          },
-          entered: {
-            transform: `scale(${to})`,
-          },
-          exiting: {
-            transform: `scale(${from})`,
-          },
-          exited: {
-            transform: `scale(${from})`,
-          },
-        }),
-        [from, to]
-      );
-      return (
-        <Transition
-          {...props}
-          ref={outsideRef}
-          timeout={timeout}
-          defaultStyle={defaultStyle}
-          transitionStyle={transitionStyle}
-          className={`ZoomInTransition`}
-        >
-          {children}
-        </Transition>
-      );
-    }
-  );
+        entered: {
+          transform: `scale(${to})`,
+        },
+        exiting: {
+          transform: `scale(${from})`,
+        },
+        exited: {
+          transform: `scale(${from})`,
+        },
+      }),
+      [from, to]
+    );
+    return (
+      <Transition
+        {...props}
+        ref={outsideRef}
+        timeout={timeout}
+        defaultStyle={defaultStyle}
+        transitionStyle={transitionStyle}
+        className={`ZoomInTransition`}
+      >
+        {children}
+      </Transition>
+    );
+  }
+);
 
 ZoomTransition.displayName = "ZoomTransition";
 

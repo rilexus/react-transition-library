@@ -23,6 +23,7 @@ var __rest = (this && this.__rest) || function (s, e) {
 import { jsx as _jsx } from "react/jsx-runtime";
 import { Transition as RTGTransition } from "react-transition-group";
 import React, { createElement, forwardRef, useEffect, useRef, useState, } from "react";
+import { mergeRefs } from "../../utils/mergeRefs";
 var Transition = forwardRef(function (_a, outsideRef) {
     var children = _a.children, defaultStyle = _a.defaultStyle, transitionStyle = _a.transitionStyle, className = _a.className, as = _a.as, style = _a.style, addEndListener = _a.addEndListener, props = __rest(_a, ["children", "defaultStyle", "transitionStyle", "className", "as", "style", "addEndListener"]);
     var _b = useState(false), _in = _b[0], _setIn = _b[1];
@@ -42,9 +43,7 @@ var Transition = forwardRef(function (_a, outsideRef) {
         };
     }, [props.in, timeoutRef]);
     useEffect(function () {
-        if (nodeRef.current && outsideRef) {
-            outsideRef.current = nodeRef.current;
-        }
+        mergeRefs([nodeRef, outsideRef])(nodeRef.current);
     }, [nodeRef, outsideRef]);
     return (_jsx(RTGTransition, __assign({}, props, { in: _in, nodeRef: nodeRef, addEndListener: function (done) {
             if (addEndListener) {
