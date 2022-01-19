@@ -12,17 +12,8 @@ import { mergeRefs } from "../../utils/mergeRefs";
 
 const Transition = forwardRef<HTMLElement, TransitionFactoryPropsType>(
   (
-    {
-      children,
-      defaultStyle,
-      transitionStyle,
-      className,
-      as,
-      style,
-      addEndListener,
-      ...props
-    },
-    outsideRef: any
+    { children, defaultStyle, transitionStyle, className, as, style, ...props },
+    outsideRef
   ) => {
     const [_in, _setIn] = useState(false);
     const timeoutRef = useRef<any>();
@@ -33,7 +24,8 @@ const Transition = forwardRef<HTMLElement, TransitionFactoryPropsType>(
       // Component should animate on mount see:<Ω>
       requestAnimationFrame(() => {
         timeoutRef.current = setTimeout(() => {
-          //@ts-ignore
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           _setIn(props.in);
         }, 5);
       });
@@ -47,20 +39,12 @@ const Transition = forwardRef<HTMLElement, TransitionFactoryPropsType>(
     }, [nodeRef, outsideRef]);
 
     return (
-      <RTGTransition
-        {...props}
-        in={_in}
-        nodeRef={nodeRef}
-        addEndListener={(done: any) => {
-          if (addEndListener) {
-            addEndListener(nodeRef.current as any, done);
-          }
-        }}
-      >
-        {(transitionStatus: TransitionStatusType) => {
+      <RTGTransition {...props} in={_in} nodeRef={nodeRef}>
+        {(transitionStatus: TransitionStatusType, childProps: any) => {
           return createElement(
             as || "div",
             {
+              ...childProps,
               style: {
                 ...style,
                 ...defaultStyle,
@@ -76,5 +60,7 @@ const Transition = forwardRef<HTMLElement, TransitionFactoryPropsType>(
     );
   }
 );
+
+Transition.displayName = "Transition";
 
 export { Transition };

@@ -25,7 +25,7 @@ import { Transition as RTGTransition } from "react-transition-group";
 import React, { createElement, forwardRef, useEffect, useRef, useState, } from "react";
 import { mergeRefs } from "../../utils/mergeRefs";
 var Transition = forwardRef(function (_a, outsideRef) {
-    var children = _a.children, defaultStyle = _a.defaultStyle, transitionStyle = _a.transitionStyle, className = _a.className, as = _a.as, style = _a.style, addEndListener = _a.addEndListener, props = __rest(_a, ["children", "defaultStyle", "transitionStyle", "className", "as", "style", "addEndListener"]);
+    var children = _a.children, defaultStyle = _a.defaultStyle, transitionStyle = _a.transitionStyle, className = _a.className, as = _a.as, style = _a.style, props = __rest(_a, ["children", "defaultStyle", "transitionStyle", "className", "as", "style"]);
     var _b = useState(false), _in = _b[0], _setIn = _b[1];
     var timeoutRef = useRef();
     var nodeRef = React.useRef(null);
@@ -34,7 +34,8 @@ var Transition = forwardRef(function (_a, outsideRef) {
         // Component should animate on mount see:<Ω>
         requestAnimationFrame(function () {
             timeoutRef.current = setTimeout(function () {
-                //@ts-ignore
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 _setIn(props.in);
             }, 5);
         });
@@ -45,16 +46,9 @@ var Transition = forwardRef(function (_a, outsideRef) {
     useEffect(function () {
         mergeRefs([nodeRef, outsideRef])(nodeRef.current);
     }, [nodeRef, outsideRef]);
-    return (_jsx(RTGTransition, __assign({}, props, { in: _in, nodeRef: nodeRef, addEndListener: function (done) {
-            if (addEndListener) {
-                addEndListener(nodeRef.current, done);
-            }
-        } }, { children: function (transitionStatus) {
-            return createElement(as || "div", {
-                style: __assign(__assign(__assign({}, style), defaultStyle), transitionStyle[transitionStatus]),
-                className: className,
-                ref: nodeRef,
-            }, children);
+    return (_jsx(RTGTransition, __assign({}, props, { in: _in, nodeRef: nodeRef }, { children: function (transitionStatus, childProps) {
+            return createElement(as || "div", __assign(__assign({}, childProps), { style: __assign(__assign(__assign({}, style), defaultStyle), transitionStyle[transitionStatus]), className: className, ref: nodeRef }), children);
         } }), void 0));
 });
+Transition.displayName = "Transition";
 export { Transition };

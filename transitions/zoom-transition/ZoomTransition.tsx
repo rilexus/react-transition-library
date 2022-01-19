@@ -1,9 +1,4 @@
-import React, {
-  FC,
-  forwardRef,
-  ForwardRefExoticComponent,
-  useMemo,
-} from "react";
+import React, { forwardRef, useMemo } from "react";
 import { Transition } from "../transition/Transition";
 import { useCSSStyle } from "../../hooks/use-css-style";
 import { Ease } from "../../ease";
@@ -31,6 +26,7 @@ const ZoomTransition = forwardRef<HTMLElement, ZoomTransitionProps>(
     },
     outsideRef
   ) => {
+    console.log(transformOrigin);
     const defaultStyle = useCSSStyle(
       {
         transformOrigin: transformOrigin,
@@ -56,6 +52,9 @@ const ZoomTransition = forwardRef<HTMLElement, ZoomTransitionProps>(
       }),
       [from, to]
     );
+
+    console.log("zoom: ", props);
+
     return (
       <Transition
         {...props}
