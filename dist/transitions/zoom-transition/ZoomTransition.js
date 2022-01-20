@@ -27,7 +27,6 @@ import { useCSSStyle } from "../../hooks/use-css-style";
 import { Ease } from "../../ease";
 var ZoomTransition = forwardRef(function (_a, outsideRef) {
     var children = _a.children, _b = _a.delay, delay = _b === void 0 ? 0 : _b, _c = _a.ease, ease = _c === void 0 ? Ease.ease : _c, _d = _a.transformOrigin, transformOrigin = _d === void 0 ? "center" : _d, from = _a.from, to = _a.to, timeout = _a.timeout, props = __rest(_a, ["children", "delay", "ease", "transformOrigin", "from", "to", "timeout"]);
-    console.log(transformOrigin);
     var defaultStyle = useCSSStyle({
         transformOrigin: transformOrigin,
         willChange: "transform",

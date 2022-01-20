@@ -26,7 +26,6 @@ const ZoomTransition = forwardRef<HTMLElement, ZoomTransitionProps>(
     },
     outsideRef
   ) => {
-    console.log(transformOrigin);
     const defaultStyle = useCSSStyle(
       {
         transformOrigin: transformOrigin,
