@@ -51,9 +51,6 @@ const ZoomTransition = forwardRef<HTMLElement, ZoomTransitionProps>(
       }),
       [from, to]
     );
-
-    console.log("zoom: ", props);
-
     return (
       <Transition
         {...props}

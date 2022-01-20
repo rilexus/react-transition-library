@@ -46,7 +46,6 @@ var ZoomTransition = forwardRef(function (_a, outsideRef) {
             transform: "scale(".concat(from, ")"),
         },
     }); }, [from, to]);
-    console.log("zoom: ", props);
     return (_jsx(Transition, __assign({}, props, { ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "ZoomInTransition" }, { children: children }), void 0));
 });
 ZoomTransition.displayName = "ZoomTransition";
