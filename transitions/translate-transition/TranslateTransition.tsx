@@ -12,33 +12,46 @@ type TranslateTransitionProps = TransitionProps & {
 const TranslateTransition: ForwardRefExoticComponent<TranslateTransitionProps> =
   forwardRef<HTMLElement, TranslateTransitionProps>(
     (
-      { children, to, from, timeout, ease = Ease.ease, delay, ...props },
+      {
+        children,
+        to,
+        from,
+        timeout = 400,
+        ease = Ease.ease,
+        delay = 0,
+        ...props
+      },
       outsideRef
     ) => {
+      const fromX = from[0];
+      const fromY = from[1];
+      const toX = to[0];
+      const toY = to[1];
       const defaultStyle = useCSSStyle(
         {
           willChange: "transform",
           transition: `transform ${timeout}ms ${ease} ${delay}ms`,
-          transform: `translate(${from[0]}, ${from[1]})`,
+          transform: `translate(${fromX}, ${fromY})`,
         },
-        [from[0], from[1], timeout, ease, delay]
+        [fromX, fromY, timeout, ease, delay]
       );
+
       const transitionStyle = useMemo(
         () => ({
           entering: {
-            transform: `translate(${to[0]}, ${to[1]})`,
+            transform: `translate(${toX}, ${toY})`,
           },
           entered: {
-            transform: `translate(${to[0]}, ${to[1]})`,
+            transform: `translate(${toX}, ${toY})`,
           },
           exiting: {
-            transform: `translate(${from[0]}, ${from[1]})`,
+            transform: `translate(${fromX}, ${fromY})`,
           },
           exited: {
-            transform: `translate(${from[0]}, ${from[1]})`,
+            transform: `translate(${fromX}, ${fromY})`,
           },
         }),
-        [from[0], from[1], to[0], to[1]]
+        [fromX, fromY, toX, toY]
       );
 
       return (
@@ -55,5 +68,5 @@ const TranslateTransition: ForwardRefExoticComponent<TranslateTransitionProps> =
       );
     }
   );
-
+TranslateTransition.displayName = "TranslateTransition";
 export { TranslateTransition };

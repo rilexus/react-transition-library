@@ -22,4 +22,7 @@ const SlideYTransition: ForwardRefExoticComponent<SlideYTransitionProps> =
       );
     }
   );
+
+SlideYTransition.displayName = "SlideYTransition";
+
 export { SlideYTransition };

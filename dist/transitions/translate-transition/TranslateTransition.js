@@ -26,26 +26,31 @@ import { useCSSStyle } from "../../hooks";
 import { Transition } from "../transition";
 import { Ease } from "../../ease";
 var TranslateTransition = forwardRef(function (_a, outsideRef) {
-    var children = _a.children, to = _a.to, from = _a.from, timeout = _a.timeout, _b = _a.ease, ease = _b === void 0 ? Ease.ease : _b, delay = _a.delay, props = __rest(_a, ["children", "to", "from", "timeout", "ease", "delay"]);
+    var children = _a.children, to = _a.to, from = _a.from, _b = _a.timeout, timeout = _b === void 0 ? 400 : _b, _c = _a.ease, ease = _c === void 0 ? Ease.ease : _c, _d = _a.delay, delay = _d === void 0 ? 0 : _d, props = __rest(_a, ["children", "to", "from", "timeout", "ease", "delay"]);
+    var fromX = from[0];
+    var fromY = from[1];
+    var toX = to[0];
+    var toY = to[1];
     var defaultStyle = useCSSStyle({
         willChange: "transform",
         transition: "transform ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
-        transform: "translate(".concat(from[0], ", ").concat(from[1], ")"),
-    }, [from[0], from[1], timeout, ease, delay]);
+        transform: "translate(".concat(fromX, ", ").concat(fromY, ")"),
+    }, [fromX, fromY, timeout, ease, delay]);
     var transitionStyle = useMemo(function () { return ({
         entering: {
-            transform: "translate(".concat(to[0], ", ").concat(to[1], ")"),
+            transform: "translate(".concat(toX, ", ").concat(toY, ")"),
         },
         entered: {
-            transform: "translate(".concat(to[0], ", ").concat(to[1], ")"),
+            transform: "translate(".concat(toX, ", ").concat(toY, ")"),
         },
         exiting: {
-            transform: "translate(".concat(from[0], ", ").concat(from[1], ")"),
+            transform: "translate(".concat(fromX, ", ").concat(fromY, ")"),
         },
         exited: {
-            transform: "translate(".concat(from[0], ", ").concat(from[1], ")"),
+            transform: "translate(".concat(fromX, ", ").concat(fromY, ")"),
         },
-    }); }, [from[0], from[1], to[0], to[1]]);
+    }); }, [fromX, fromY, toX, toY]);
     return (_jsx(Transition, __assign({}, props, { ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "ScaleInUpTransition" }, { children: children }), void 0));
 });
+TranslateTransition.displayName = "TranslateTransition";
 export { TranslateTransition };

@@ -27,4 +27,5 @@ var SlideYTransition = forwardRef(function (_a, outsideRef) {
     var children = _a.children, from = _a.from, to = _a.to, props = __rest(_a, ["children", "from", "to"]);
     return (_jsx(TranslateTransition, __assign({}, props, { ref: outsideRef, from: ["0px", from], to: ["0px", to] }, { children: children }), void 0));
 });
+SlideYTransition.displayName = "SlideYTransition";
 export { SlideYTransition };
