@@ -1,6 +1,9 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mergeRefs = void 0;
 function mergeRefs(refs) {
-    return function (elemRef) {
-        refs.forEach(function (ref) {
+    return (elemRef) => {
+        refs.forEach((ref) => {
             if (typeof ref === "function") {
                 ref(elemRef);
             }
@@ -10,4 +13,4 @@ function mergeRefs(refs) {
         });
     };
 }
-export { mergeRefs };
+exports.mergeRefs = mergeRefs;

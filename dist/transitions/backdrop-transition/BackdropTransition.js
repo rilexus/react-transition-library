@@ -1,59 +1,39 @@
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-import { jsx as _jsx } from "react/jsx-runtime";
-import { forwardRef, useMemo } from "react";
-import { useCSSStyle } from "../../hooks";
-import { Transition } from "../transition";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BackdropTransition = void 0;
+const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = require("react");
+const hooks_1 = require("../../hooks");
+const transition_1 = require("../transition");
 /**
  * NOTE: css backdrop-filter transition is a ducking bitch!
  * It does not play well with other transitions. Especially with the opacity.
  * */
-var BackdropTransition = forwardRef(function (_a, outsideRef) {
-    var timeout = _a.timeout, _b = _a.delay, delay = _b === void 0 ? 0 : _b, to = _a.to, _c = _a.ease, ease = _c === void 0 ? "ease" : _c, from = _a.from, backgroundColor = _a.backgroundColor, children = _a.children, props = __rest(_a, ["timeout", "delay", "to", "ease", "from", "backgroundColor", "children"]);
-    var defaultStyle = useCSSStyle({
+const BackdropTransition = (0, react_1.forwardRef)(({ timeout, delay = 0, to, ease = "ease", from, backgroundColor, children, ...props }, outsideRef) => {
+    const defaultStyle = (0, hooks_1.useCSSStyle)({
         willChange: "backdrop-filter",
-        backgroundColor: backgroundColor,
-        transition: "backdrop-filter ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms, -webkit-backdrop-filter ").concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
+        backgroundColor,
+        transition: `backdrop-filter ${timeout}ms ${ease} ${delay}ms, -webkit-backdrop-filter ${timeout}ms ${ease} ${delay}ms`,
     }, [timeout, delay]);
-    var transitionStyle = useMemo(function () { return ({
+    const transitionStyle = (0, react_1.useMemo)(() => ({
         entering: {
-            WebkitBackdropFilter: "blur(".concat(to, ")"),
-            backdropFilter: "blur(".concat(to, ")"),
+            WebkitBackdropFilter: `blur(${to})`,
+            backdropFilter: `blur(${to})`,
         },
         entered: {
-            WebkitBackdropFilter: "blur(".concat(to, ")"),
-            backdropFilter: "blur(".concat(to, ")"),
+            WebkitBackdropFilter: `blur(${to})`,
+            backdropFilter: `blur(${to})`,
         },
         exiting: {
-            WebkitBackdropFilter: "blur(".concat(from, ")"),
-            backdropFilter: "blur(".concat(from, ")"),
+            WebkitBackdropFilter: `blur(${from})`,
+            backdropFilter: `blur(${from})`,
         },
         exited: {
-            WebkitBackdropFilter: "blur(".concat(from, ")"),
-            backdropFilter: "blur(".concat(from, ")"),
+            WebkitBackdropFilter: `blur(${from})`,
+            backdropFilter: `blur(${from})`,
         },
-    }); }, [from, to]);
-    return (_jsx(Transition, __assign({}, props, { timeout: timeout, ref: outsideRef, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "BackdropTransition" }, { children: children }), void 0));
+    }), [from, to]);
+    return ((0, jsx_runtime_1.jsx)(transition_1.Transition, { ...props, timeout: timeout, ref: outsideRef, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "BackdropTransition", children: children }, void 0));
 });
+exports.BackdropTransition = BackdropTransition;
 BackdropTransition.displayName = "BackdropTransition";
-export { BackdropTransition };

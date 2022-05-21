@@ -1,15 +1,18 @@
-import { useEffect, useRef } from "react";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.useMouseEnter = void 0;
+const react_1 = require("react");
 function useMouseEnter(ref, callback) {
-    var callbackRef = useRef(callback);
-    useEffect(function () {
+    const callbackRef = (0, react_1.useRef)(callback);
+    (0, react_1.useEffect)(() => {
         if (ref.current) {
             ref.current.addEventListener("mouseenter", callbackRef.current);
         }
-        return function () {
+        return () => {
             if (ref.current) {
                 ref.current.removeEventListener("mouseenter", callbackRef.current);
             }
         };
     }, [ref, callbackRef]);
 }
-export { useMouseEnter };
+exports.useMouseEnter = useMouseEnter;

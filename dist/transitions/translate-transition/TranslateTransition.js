@@ -1,56 +1,36 @@
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-var __rest = (this && this.__rest) || function (s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-};
-import { jsx as _jsx } from "react/jsx-runtime";
-import { forwardRef, useMemo } from "react";
-import { useCSSStyle } from "../../hooks";
-import { Transition } from "../transition";
-import { Ease } from "../../ease";
-var TranslateTransition = forwardRef(function (_a, outsideRef) {
-    var children = _a.children, to = _a.to, from = _a.from, _b = _a.timeout, timeout = _b === void 0 ? 400 : _b, _c = _a.ease, ease = _c === void 0 ? Ease.ease : _c, _d = _a.delay, delay = _d === void 0 ? 0 : _d, props = __rest(_a, ["children", "to", "from", "timeout", "ease", "delay"]);
-    var fromX = from[0];
-    var fromY = from[1];
-    var toX = to[0];
-    var toY = to[1];
-    var defaultStyle = useCSSStyle({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TranslateTransition = void 0;
+const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = require("react");
+const hooks_1 = require("../../hooks");
+const transition_1 = require("../transition");
+const ease_1 = require("../../ease");
+const TranslateTransition = (0, react_1.forwardRef)(({ children, to, from, timeout = 400, ease = ease_1.Ease.ease, delay = 0, ...props }, outsideRef) => {
+    const fromX = from[0];
+    const fromY = from[1];
+    const toX = to[0];
+    const toY = to[1];
+    const defaultStyle = (0, hooks_1.useCSSStyle)({
         willChange: "transform",
-        transition: "transform ".concat(timeout, "ms ").concat(ease, " ").concat(delay, "ms"),
-        transform: "translate(".concat(fromX, ", ").concat(fromY, ")"),
+        transition: `transform ${timeout}ms ${ease} ${delay}ms`,
+        transform: `translate(${fromX}, ${fromY})`,
     }, [fromX, fromY, timeout, ease, delay]);
-    var transitionStyle = useMemo(function () { return ({
+    const transitionStyle = (0, react_1.useMemo)(() => ({
         entering: {
-            transform: "translate(".concat(toX, ", ").concat(toY, ")"),
+            transform: `translate(${toX}, ${toY})`,
         },
         entered: {
-            transform: "translate(".concat(toX, ", ").concat(toY, ")"),
+            transform: `translate(${toX}, ${toY})`,
         },
         exiting: {
-            transform: "translate(".concat(fromX, ", ").concat(fromY, ")"),
+            transform: `translate(${fromX}, ${fromY})`,
         },
         exited: {
-            transform: "translate(".concat(fromX, ", ").concat(fromY, ")"),
+            transform: `translate(${fromX}, ${fromY})`,
         },
-    }); }, [fromX, fromY, toX, toY]);
-    return (_jsx(Transition, __assign({}, props, { ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "ScaleInUpTransition" }, { children: children }), void 0));
+    }), [fromX, fromY, toX, toY]);
+    return ((0, jsx_runtime_1.jsx)(transition_1.Transition, { ...props, ref: outsideRef, timeout: timeout, defaultStyle: defaultStyle, transitionStyle: transitionStyle, className: "ScaleInUpTransition", children: children }, void 0));
 });
+exports.TranslateTransition = TranslateTransition;
 TranslateTransition.displayName = "TranslateTransition";
-export { TranslateTransition };

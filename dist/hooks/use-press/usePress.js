@@ -1,4 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PRESS_TYPES = exports.usePress = void 0;
+const react_1 = require("react");
 var PRESS_TYPES;
 (function (PRESS_TYPES) {
     PRESS_TYPES["idle"] = "idle";
@@ -6,33 +9,34 @@ var PRESS_TYPES;
     PRESS_TYPES["press"] = "press";
     PRESS_TYPES["pressend"] = "pressend";
 })(PRESS_TYPES || (PRESS_TYPES = {}));
-var usePress = function (callback, ref) {
-    var _a = useState(PRESS_TYPES.idle), currentState = _a[0], setCurrentState = _a[1];
-    var callbackRef = useRef(callback);
-    useEffect(function () {
+exports.PRESS_TYPES = PRESS_TYPES;
+const usePress = (callback, ref) => {
+    const [currentState, setCurrentState] = (0, react_1.useState)(PRESS_TYPES.idle);
+    const callbackRef = (0, react_1.useRef)(callback);
+    (0, react_1.useEffect)(() => {
         callbackRef.current = callback;
     }, [callback]);
-    useEffect(function () {
+    (0, react_1.useEffect)(() => {
         callbackRef.current(currentState);
     }, [currentState, callbackRef]);
-    var pressStartRef = useRef();
-    var pressRef = useRef();
-    var pressedRef = useRef();
-    useEffect(function () {
-        var htmlElement = ref.current;
-        var start = function (event) {
-            var setStart = function () { return setCurrentState(PRESS_TYPES.pressstart); };
-            var setPress = function () { return setCurrentState(PRESS_TYPES.press); };
-            var setPressed = function () { return setCurrentState(PRESS_TYPES.pressend); };
-            pressStartRef.current = setTimeout(function () { return setStart(); }, 150);
-            pressRef.current = setTimeout(function () { return setPress(); }, 200);
-            pressedRef.current = setTimeout(function () { return setPressed(); }, 700);
+    const pressStartRef = (0, react_1.useRef)();
+    const pressRef = (0, react_1.useRef)();
+    const pressedRef = (0, react_1.useRef)();
+    (0, react_1.useEffect)(() => {
+        const htmlElement = ref.current;
+        const start = (event) => {
+            const setStart = () => setCurrentState(PRESS_TYPES.pressstart);
+            const setPress = () => setCurrentState(PRESS_TYPES.press);
+            const setPressed = () => setCurrentState(PRESS_TYPES.pressend);
+            pressStartRef.current = setTimeout(() => setStart(), 150);
+            pressRef.current = setTimeout(() => setPress(), 200);
+            pressedRef.current = setTimeout(() => setPressed(), 700);
         };
-        var abort = function (event) {
+        const abort = (event) => {
             clearTimeout(pressStartRef.current);
             clearTimeout(pressRef.current);
             clearTimeout(pressedRef.current);
-            var setIdle = function () { return setCurrentState(PRESS_TYPES.idle); };
+            const setIdle = () => setCurrentState(PRESS_TYPES.idle);
             setIdle();
         };
         if (htmlElement) {
@@ -41,7 +45,7 @@ var usePress = function (callback, ref) {
             htmlElement.addEventListener("mouseup", abort);
             htmlElement.addEventListener("touchend", abort);
         }
-        return function () {
+        return () => {
             if (htmlElement) {
                 htmlElement.removeEventListener("mousedown", start);
                 htmlElement.removeEventListener("touchstart", start);
@@ -52,4 +56,4 @@ var usePress = function (callback, ref) {
     }, [ref, currentState, pressRef, pressStartRef, pressedRef]);
     return currentState;
 };
-export { usePress, PRESS_TYPES };
+exports.usePress = usePress;

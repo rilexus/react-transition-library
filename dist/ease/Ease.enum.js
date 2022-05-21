@@ -1,3 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Ease = void 0;
 var Ease;
 (function (Ease) {
     Ease["linear"] = "cubic-bezier(0.250, 0.250, 0.750, 0.750)";
@@ -30,4 +33,4 @@ var Ease;
     Ease["easeInOutCirc"] = "cubic-bezier(0.785, 0.135, 0.150, 0.860)";
     Ease["easeInOutBack"] = "cubic-bezier(0.680, -0.550, 0.265, 1.550)";
 })(Ease || (Ease = {}));
-export { Ease };
+exports.Ease = Ease;
